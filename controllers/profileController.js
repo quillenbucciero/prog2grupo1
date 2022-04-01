@@ -2,4 +2,4 @@ const profileController = {
 
 };
 
-module.exports(profileController);
+module.exports = profileController;

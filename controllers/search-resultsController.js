@@ -2,4 +2,4 @@ const searchController = {
 
 };
 
-module.exports(searchController);
+module.exports = searchController;

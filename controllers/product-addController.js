@@ -2,4 +2,4 @@ const addController = {
 
 };
 
-module.exports(addController);
+module.exports = addController;

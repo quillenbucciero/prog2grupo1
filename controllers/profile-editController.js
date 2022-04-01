@@ -2,4 +2,4 @@ const editController = {
 
 };
 
-module.exports(editController);
+module.exports = editController;
