@@ -8,9 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
-const productAddRouter = require('./routes/product-add');
 const productsRouter = require('./routes/product');
-const profileEditRouter = require('./routes/profile-edit');
 const profileRouter = require('./routes/profile');
 const registerRouter = require('./routes/register');
 const searchResultsRouter = require('./routes/search-results')
@@ -32,9 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter); 
 app.use('/login' ,loginRouter);
-app.use('product-add', productAddRouter);
 app.use('/products' , productsRouter); /*Cuando la ruta del request sea products, ejecuto lo que este retornando productsRouter*/
-app.use('/profile-edit', profileEditRouter);
 app.use('/profile', profileRouter);
 app.use('/register', registerRouter);
 app.use('/search-results', searchResultsRouter);
