@@ -17,11 +17,33 @@ const data = {
     ],
     comentarios: [
         {
-            usuario: 'nombre',
-            textoDelComentario: 'texto',
+            usuario: 'Caro Canorio',
+            textoDelComentario: 'Muy buen producto',
+            imagenDePerfil: 'file'
+        },
+        {
+            usuario: 'Quillén Bucciero',
+            textoDelComentario: 'No me gustó',
+            imagenDePerfil: 'file'
+        },
+        {
+            usuario: 'Lola Biscay',
+            textoDelComentario: 'Muy rico!',
+            imagenDePerfil: 'file'
+        },
+        {
+            usuario: 'Carolina Canorio',
+            textoDelComentario: 'Muy bueno',
+            imagenDePerfil: 'file'
+        },
+        {
+            usuario: 'Rama',
+            textoDelComentario: 'Muy malo',
             imagenDePerfil: 'file'
         },
     ]
-}
+};
+
+module.exports = data;
 
 /*Productos y comentarios son arrays, los productos se van a tener que renderizar. La informacion la tenemos que sacar del modulo*/
