@@ -4,7 +4,6 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -68,7 +67,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: #99e265;
 }
 
 .main-header_home-link,
