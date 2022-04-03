@@ -1,5 +1,7 @@
 const profileController = {
-    edit: {
+    edit: function(req,res) {
+        res.render('profile-edit')
+
     }
 };
 

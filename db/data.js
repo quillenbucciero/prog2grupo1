@@ -1,11 +1,11 @@
 const data = {
     usuario: {
-        usuario: 'texto',
-        email: 'campo de tipo email',
-        contrasenia: 'texto',
-        fechaDeNacimiento: 21/06/03,
-        documento: 4480000,
-        fotoDePerfil: 'campo de tipo file'
+        usuario: 'Quillén Bucciero',
+        email: 'Abuccierorodriguez@udesa.edu.ar',
+        contrasenia: 'Qui',
+        fechaDeNacimiento: 18/11/00,
+        documento: 43052331,
+        fotoDePerfil: 'campo de tipo file' /*falta poner la foto*/
     },
     producto: [
         {
