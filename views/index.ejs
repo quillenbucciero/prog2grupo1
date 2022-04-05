@@ -21,135 +21,29 @@
 				<h2 class="products-title">Novedades</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="/images/products/veganesa.png" alt="Veganesa">
-						</figure>
-						<article class="product-box_data">
-							<h2>Veganesa</h2>
-							<p>Aderezo a base de aceite de girasol, sabor mayonesa, libre de gluten, sin tacc.</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="/images/products/alfajorddl.png" alt="Alfajor de dulce de leche">
-						</figure>
-						<article class="product-box_data">
-							<h2>Alfajor de dulce de leche sin tacc x60gr</h2>
-							<p>Delicioso Alfajor de Dulce de Leche de 60gr.Trae 12 Unidades por caja.</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="/images/products/nuggets.png" alt="Nuggets sabor pollo">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nuggets sabor pollo</h2>
-							<p>Bocaditos a base de soja, sabor pollo y libre de gluten</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="/images/products/Bebible-chocolatada.png" alt="Bebible chocolatada">
-						</figure>
-						<article class="product-box_data">
-							<h2>Bebible chocolatada</h2>
-							<p>Bebida sin alcohol a base de almendras chocolatada y sin tacc</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-		</div>
-	</div>
-	<!-- /Novedades -->
-	<!-- Más comentados -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Más comentados</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="/images/products/bigclassic.png" alt="Big Classic">
-						</figure>
-						<article class="product-box_data">
-							<h2>Big Classic</h2>
-							<p>Medallón a base de soja, sabor carne, libre de gluten. 2 unidades 115g</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="images/products/Alfajor-chocolate.png" alt="Alfajor de chocolate">
-						</figure>
-						<article class="product-box_data">
-							<h2>Alfajor de chocolate negro</h2>
-							<p>Delicioso Alfajor Negro de Chocolate de 60gr trae 12 Unidades por caja.</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="images/products/pizza.jpg" alt="Pizza sin tacc">
-						</figure>
-						<article class="product-box_data">
-							<h2>Pizza con Muzzalmendra</h2>
-							<p>Pizza sin tacc con muzzalmendra tamaño individual</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product">
-						<figure class="product-box_image">
-							<img src="images/products/Fantastique-Tradicional.jpg" alt="Fantastique tradicional">
-						</figure>
-						<article class="product-box_data">
-							<h2>Fantastique tradicional</h2>
-							<p>Untable de almendras sin tacc</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
+			<% for( let i = 0; i < data.length; i++ ) { %>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product">
+							<figure class="product-box_image">
+								<img src="<%= data[i].imagen %>" alt="<%= data[i].nombreProducto %> ">
+							</figure>
+							<article class="product-box_data">
+								<h2> <%= data[i].nombreProducto %> </h2>
+								<p> <%= data[i].descripcion %> </p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>
+			<% } %>
 		</div>
 	</div>
 	<!-- /Más comentados -->
 
 	<!-- Footer -->
-	<%- include-('./partials/footer') %>
-	 	<!-- Footer -->
+	<%- include('./partials/footer') %>
+	<!-- Footer -->
 
 </body>	
 </html>
