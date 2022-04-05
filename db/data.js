@@ -91,7 +91,7 @@ const data = {
             imagenDePerfil: 'file'
         },
         {
-            usuario: 'Rama',
+            usuario: 'Abril Quillén Bucciero',
             textoDelComentario: 'Muy malo',
             imagenDePerfil: 'file'
         },
