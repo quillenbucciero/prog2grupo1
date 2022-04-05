@@ -4,7 +4,11 @@ const profileController = {
 
     index: function(req, res) {
 
-        return res.render('profile')
+
+        return res.render('profile',{
+            data: data.usuario
+        })
+
     },
 
     edit: function(req, res) {
