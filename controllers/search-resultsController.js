@@ -3,8 +3,5 @@ const searchController = {
         return res.render('search-results');
     }
 };
-
-
-
 module.exports = searchController;
 
