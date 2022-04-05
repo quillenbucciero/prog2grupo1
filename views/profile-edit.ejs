@@ -2,19 +2,6 @@
 <html lang="es">
 <!-- Include Head -->
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
-
-	<title> Viva el Vegano</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="./css/app.css">
-</head>
 
 <body>
 	<!-- Header -->
@@ -29,8 +16,8 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form method="get">
-					<label for="usuario">Nombre de Usuario</label><br> /*br es para dividir las lineas*/
+				<form method="get" action="profile/edit">
+					<label for="usuario">Nombre de Usuario</label><br> 
 					<input type="text" id="usuario" name="usuario"><br>
 					<label for="email">Email</label><br>
 					<input type="email" id="email" name="email"><br>
@@ -45,12 +32,6 @@
 				</form>
 			</h2>
 
-
-
-
-
-
-
 	<!-- Footer -->		
 	<%- include-('./partials/footer') %> 
 	<!-- Footer -->
@@ -58,3 +39,4 @@
 </body>
 
 </html>
+
