@@ -1,4 +1,5 @@
-var createError = require('http-errors');
+const newLocal = require('http-errors');
+var createError = newLocal;
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -6,7 +7,6 @@ var logger = require('morgan');
 
 /*Requerimientos*/
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const productsRouter = require('./routes/product');
 const profileRouter = require('./routes/profile');
 const searchResultsRouter = require('./routes/search-results')
@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
-app.use('/users', usersRouter); 
 app.use('/products' , productsRouter); /*Cuando la ruta del request sea products, ejecuto lo que este retornando productsRouter*/
 app.use('/profile', profileRouter);
 app.use('/search-results', searchResultsRouter);
