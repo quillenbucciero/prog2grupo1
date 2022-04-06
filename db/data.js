@@ -5,7 +5,7 @@ const data = {
         contrasenia: 'Qui',
         fechaDeNacimiento: 18/11/00,
         documento: 43052331,
-        fotoDePerfil: '/images/users/Qui.jpeg', /*falta poner la foto*/
+        fotoDePerfil: '/images/users/Qui.jpeg', 
     },
     producto: [
         {
@@ -18,14 +18,14 @@ const data = {
         },
         {
             imagen: '/images/products/Alfajor-chocolate.png',
-            nombreProducto: 'Alfajor Vegano Negro x 75gr',
+            nombreProducto: 'Alfajor Vegano Negro x 75gr - Felices Las Vacas',
             descripcion: 'Alfajor vegano negro relleno de dulce de almendras',
             fechaDeCarga: 22/03/22,
             id: 1,
         },
         {
             imagen: '/images/products/pizza.jpg',
-            nombreProducto: 'Pizza Vegana Muzzalmendra sin TACC x 240gr',
+            nombreProducto: 'Pizza Vegana Muzzalmendra sin TACC x 240gr - Felices Las Vacas',
             descripcion: 'Pizza con salsa de tomate y alimento vegetal a base de almendras sabor mozzarella, libre de gluten.',
             fechaDeCarga: 22/03/22,
             id: 2,
@@ -39,41 +39,41 @@ const data = {
         },
         {
             imagen: ' /images/products/Fantastique-Tradicional.jpg',
-            nombreProducto: 'Untable de Almendra Fantastique Tradicional x 200gr',
+            nombreProducto: 'Untable de Almendra Fantastique Tradicional x 200gr - Felices Las Vacas',
             descripcion: 'Untable de Almendra Fantastique Tradicional x 200gr -     LIBRE DE GLUTEN - SIN TACC - A BASE DE PLANTAS',
             fechaDeCarga: 22/03/22,
             id: 4,
         },
         {
             imagen: ' /images/products/bigclassic.png',
-            nombreProducto: 'Big Classic x 230gr',
+            nombreProducto: 'Big Classic x 230gr - Felices Las Vacas',
             descripcion: 'Medallón a Base de soja, sabor carne. CONTIENE DERIVADOS DE SOJA. PUEDE CONTENER SULFITOS, ALMENDRAS Y CASTAÑAS DE CAJÚ - CERTIFICADO SIN TACC. Certificación Kosher',
             fechaDeCarga: 22/03/22,
             id: 5,
         },
         {
             imagen: ' /images/products/veganesa.png',
-            nombreProducto: 'Veganesa x 310gr',
+            nombreProducto: 'Veganesa x 310gr - Felices Las Vacas',
             descripcion: 'Aderezo a base de aceite de girasol, sabor mayonesa, libre de gluten, sin tacc. SIN LACTOSA, SIN HUEVO, SIN SOJA. PUEDE CONTENER ALMENDRAS Y CASTAÑAS DE CAJÚ.  CERTIFICADO SIN TACC - KOSHER 100% vegetal',
             fechaDeCarga: 22/03/22,
             id: 6,
         },
         {
             imagen: ' /images/products/Bebible-chocolatada.png',
-            nombreProducto: 'Leche Chocolatada x 200ml',
+            nombreProducto: 'Leche Chocolatada x 200ml - Felices Las Vacas',
             descripcion: 'Leche Chocolatada x 200ml -    . CONTIENE ALMENDRAS. PUEDE CONTENER CASTAÑAS DE CAJÚ.',
             fechaDeCarga: 22/03/22
         },
         {
             imagen: ' /images/products/alfajorddl.png',
-            nombreProducto: 'Alfajor Vegano tipo Maicena x 75gr',
+            nombreProducto: 'Alfajor Vegano tipo Maicena x 75gr - Felices Las Vacas',
             descripcion: 'textAlfajor vegano de maicena y dulce de almendras de    . SIN TACC - APTO KOSHER - 100% PLANT BASED. CONTIENE ALMENDRAS, DERIVADOS DE SOJA Y SULFITOS. PUEDE CONTENER LECHE, HUEVO, CASTAÑAS DE CAJÚ, NUECES Y MANÍ.',
             fechaDeCarga: 22/03/22
         },
         {
             imagen: ' /images/products/nuggets.jpg',
-            nombreProducto: 'Nuggets Veganos Sabor Pollo x 300gr -  ',
-            descripcion: 'Bocaditos a base de soja: Nuggets Veganos sabor Pollo de    . CONTIENE DERIVADOS DE SOJA. PUEDE CONTENER ALMENDRAS Y CASTAÑAS DE CAJÚ. SIN TACC - LIBRE DE GLUTEN',
+            nombreProducto: 'Nuggets Veganos Sabor Pollo x 300gr - Felices Las Vacas',
+            descripcion: 'Bocaditos a base de soja: Nuggets Veganos sabor Pollo. CONTIENE DERIVADOS DE SOJA. PUEDE CONTENER ALMENDRAS Y CASTAÑAS DE CAJÚ. SIN TACC - LIBRE DE GLUTEN',
             fechaDeCarga: 22/03/22
         }
     ],
