@@ -5,7 +5,7 @@ const data = {
         contrasenia: 'Qui',
         fechaDeNacimiento: 18/11/00,
         documento: 43052331,
-        fotoDePerfil: 'campo de tipo file', /*falta poner la foto*/
+        fotoDePerfil: '/images/users/Qui.jpeg', /*falta poner la foto*/
     },
     producto: [
         {
