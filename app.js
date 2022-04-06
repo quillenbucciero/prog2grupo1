@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
-app.use('/products' , productsRouter); /*Cuando la ruta del request sea products, ejecuto lo que este retornando productsRouter*/
+app.use('/product' , productsRouter); /*Cuando la ruta del request sea products, ejecuto lo que este retornando productsRouter*/
 app.use('/profile', profileRouter);
 app.use('/search-results', searchResultsRouter);
 

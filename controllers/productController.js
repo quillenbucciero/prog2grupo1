@@ -6,9 +6,11 @@ const productController = {
             data: data.comentarios,
         })
     },
-    add: {
-        
+    add: function(req, res) {
+        return res.render('product-add')
     }
+        
+    
 };
 
 module.exports = productController;

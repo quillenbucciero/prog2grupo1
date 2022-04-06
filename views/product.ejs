@@ -13,13 +13,13 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title">Leche de Almendras Original Sin Azúcar x 946 ml - SILK</h2> 
 			<p class="product-detail-description">
-				<a href="/product">Editar</a>
+				<a href="/product/add">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="../public/images/products/leche-almendras.jpg" alt="" class="product-detail-img">
+					<img src="/images/products/leche-almendras.jpg" alt="Leche de Almendras" class="product-detail-img">
 					<p class="product-detail-description">
 						Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! </p>
 				</article>
@@ -32,14 +32,14 @@
 								<img src="https://via.placeholder.com/35" alt="Foto de perfil">
 								<div class="data">
 									<p class="user">
-										<strong> <a href="/profile">Nombre usuario: <%= data[i].usuario %> </a> </strong>
-										<%= data[i].comentario %> 
+										<strong> <a href="/profile"><%= data[i].usuario %></strong></a> 
+										<%= data[i].textoDelComentario %> 
 									</p>
 								</div>
 							</article>  
 						<% } %>
 					</section>
-					<form class="form" action="" method="POST">
+					<form class="form" action="/product" method="get">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>

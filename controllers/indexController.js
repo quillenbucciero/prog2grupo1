@@ -1,12 +1,16 @@
+const data = require('../db/data');
+
 const indexController = {
     index: function (req,res) {
-        res.render('index')
+        return res.render('index', {
+            data: data.producto,
+        })
     },
     register: function (req,res) {
-        res.render('register')
+        return res.render('register')
     },
     login: function (req,res) {
-        res.render('login')
+        return res.render('login')
     }
 };
 
