@@ -5,50 +5,58 @@ const data = {
         contrasenia: 'Qui',
         fechaDeNacimiento: 18/11/00,
         documento: 43052331,
-        fotoDePerfil: 'campo de tipo file' /*falta poner la foto*/
+        fotoDePerfil: 'campo de tipo file', /*falta poner la foto*/
     },
     producto: [
         {
             imagen: '/images/products/leche-almendras.jpg',
             nombreProducto: 'Leche de Almendras Original Sin Azúcar x 946 ml - SILK',
             descripcion: 'Silk es un alimento líquido de origen vegetal. Es delicioso, bajo en calorías, no tiene saborizantes ni colorantes artificiales y contiene 50% más calcio que la leche de vaca. Además, es libre de lactosa por su origen. ¡Disfruta de nuestra variedad y combínalo con todo lo que se te ocurra! ',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 0,
+            
         },
         {
             imagen: '/images/products/Alfajor-chocolate.png',
             nombreProducto: 'Alfajor Vegano Negro x 75gr',
             descripcion: 'Alfajor vegano negro relleno de dulce de almendras',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 1,
         },
         {
             imagen: '/images/products/pizza.jpg',
             nombreProducto: 'Pizza Vegana Muzzalmendra sin TACC x 240gr',
             descripcion: 'Pizza con salsa de tomate y alimento vegetal a base de almendras sabor mozzarella, libre de gluten.',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 2,
         },
         {
             imagen: ' /images/products/yogur-coco.jpg',
             nombreProducto: 'Yogur a Base de Coco VEGANO sabor Vainilla Apto APLV x 160gr - Coco Iogo CRUDDA',
             descripcion: 'Yogur elaborado a base de leche de coco vegano sabor vanilla CocoIogo de Crudda.',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 3,
         },
         {
             imagen: ' /images/products/Fantastique-Tradicional.jpg',
             nombreProducto: 'Untable de Almendra Fantastique Tradicional x 200gr',
             descripcion: 'Untable de Almendra Fantastique Tradicional x 200gr -     LIBRE DE GLUTEN - SIN TACC - A BASE DE PLANTAS',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 4,
         },
         {
             imagen: ' /images/products/bigclassic.png',
             nombreProducto: 'Big Classic x 230gr',
             descripcion: 'Medallón a Base de soja, sabor carne. CONTIENE DERIVADOS DE SOJA. PUEDE CONTENER SULFITOS, ALMENDRAS Y CASTAÑAS DE CAJÚ - CERTIFICADO SIN TACC. Certificación Kosher',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 5,
         },
         {
             imagen: ' /images/products/veganesa.png',
             nombreProducto: 'Veganesa x 310gr',
             descripcion: 'Aderezo a base de aceite de girasol, sabor mayonesa, libre de gluten, sin tacc. SIN LACTOSA, SIN HUEVO, SIN SOJA. PUEDE CONTENER ALMENDRAS Y CASTAÑAS DE CAJÚ.  CERTIFICADO SIN TACC - KOSHER 100% vegetal',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 6,
         },
         {
             imagen: ' /images/products/Bebible-chocolatada.png',
