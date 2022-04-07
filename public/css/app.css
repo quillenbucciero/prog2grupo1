@@ -8,7 +8,7 @@
   --light-blue: #89d5c9;
   --gray: #666666;
   --light-gray: #ebebeb;
-  --green: #39b54a;
+  --green: #43884c;
   --base-font-family: 'Roboto', sans-serif
 }
 
@@ -67,7 +67,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: #99e265;
+  background-color: #43a047;
 }
 
 .main-header_home-link,
@@ -518,6 +518,8 @@ textarea.form-input {
   }
 
   .footer-data {
+    font-family: 'Barlow Condensed', sans-serif;;
+    font-size: 12px;
     width: 95%;
     margin: auto;
   }
