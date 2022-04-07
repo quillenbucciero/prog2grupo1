@@ -2,7 +2,9 @@ let data = require('../db/data');
 
 const searchController = {
     index: function(req,res){        
-        return res.render('search-results');
+        return res.render('search-results',{
+            productos: data.producto
+        });
     }
 };
 
