@@ -453,6 +453,26 @@ textarea.form-input {
   padding: 15px;
 }
 
+.form-register{
+  border: #ffffff solid 0px;
+  display: block;
+  margin: 10px;
+  font-size: 19px;
+  border-radius: 22px;
+  padding: 6px;
+  text-align: center;
+}
+
+.form-register-submit{
+  padding: 6px;
+  background: black; 
+  color: white;
+  font-size: 17px;
+  border-radius: 22px;
+  text-align: center;
+  border: black ;
+}
+
 /*====== Profile ======*/
 .info-usuario{
   border-bottom: 1px solid #ccc;
