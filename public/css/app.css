@@ -157,7 +157,6 @@ hr {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
 }
 
 
@@ -481,10 +480,6 @@ textarea.form-input {
   .main-header_credit-link {
     margin-top: 0;
     text-align: right;
-  }
-
-  .banner {
-    height: 320px;
   }
 
   .btn-toggle-navbar {
