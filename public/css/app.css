@@ -167,10 +167,11 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
+  font-size: 40px;
   font-weight: 400;
   color: var(--gray);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
   
 }
 
