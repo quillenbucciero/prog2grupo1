@@ -1,5 +1,5 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;400&display=swap');
 
 
 /*====== Variables ======*/
@@ -9,7 +9,7 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #43884c;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -67,7 +67,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: #43a047;
+  background-color: #7ed957;
 }
 
 .main-header_home-link,
