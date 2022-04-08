@@ -62,19 +62,22 @@ const data = {
             imagen: ' /images/products/Bebible-chocolatada.png',
             nombreProducto: 'Leche Chocolatada x 200ml - Felices Las Vacas',
             descripcion: 'Leche Chocolatada x 200ml -    . CONTIENE ALMENDRAS. PUEDE CONTENER CASTAÑAS DE CAJÚ.',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 7,
         },
         {
             imagen: ' /images/products/alfajorddl.png',
             nombreProducto: 'Alfajor Vegano tipo Maicena x 75gr - Felices Las Vacas',
-            descripcion: 'textAlfajor vegano de maicena y dulce de almendras de    . SIN TACC - APTO KOSHER - 100% PLANT BASED. CONTIENE ALMENDRAS, DERIVADOS DE SOJA Y SULFITOS. PUEDE CONTENER LECHE, HUEVO, CASTAÑAS DE CAJÚ, NUECES Y MANÍ.',
-            fechaDeCarga: 22/03/22
+            descripcion: 'Alfajor vegano de maicena y dulce de almendras de    . SIN TACC - APTO KOSHER - 100% PLANT BASED. CONTIENE ALMENDRAS, DERIVADOS DE SOJA Y SULFITOS. PUEDE CONTENER LECHE, HUEVO, CASTAÑAS DE CAJÚ, NUECES Y MANÍ.',
+            fechaDeCarga: 22/03/22,
+            id: 8,
         },
         {
             imagen: ' /images/products/nuggets.jpg',
             nombreProducto: 'Nuggets Veganos Sabor Pollo x 300gr - Felices Las Vacas',
             descripcion: 'Bocaditos a base de soja: Nuggets Veganos sabor Pollo. CONTIENE DERIVADOS DE SOJA. PUEDE CONTENER ALMENDRAS Y CASTAÑAS DE CAJÚ. SIN TACC - LIBRE DE GLUTEN',
-            fechaDeCarga: 22/03/22
+            fechaDeCarga: 22/03/22,
+            id: 9,
         }
     ],
     comentarios: [
