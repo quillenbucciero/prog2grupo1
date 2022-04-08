@@ -17,20 +17,24 @@
 	</div>
 
 
-	<div class="col-12 col-sm-6 col-lg-3">
-		<section class="product-box">
-			<a href="/product/id/<%= data[i].id%>">
-				<figure class="product-box_image">
-					<img src="<%= productos[1].imagen %> " alt="<% productos[1].nombreProducto %> ">
-				</figure>
-				<article class="product-box_data">
-					<h2><%= productos[1].nombreProducto %> </h2>
-					<p><%= productos[1].descripcion %></p>
-					<p>Comentarios: 12</p>
-				</article>
-			</a>
-		</section>
-	</div>
+	<% for( let i = 0; i < productos.length; i++ ) { %>
+
+		<div class="col-12 col-sm-6 col-lg-3">
+			<section class="product-box">
+					<a href="/product/id/<%= productos[i].id%>">
+						<figure class="product-box_image">
+							<img src="<%= productos[i].imagen %> " alt="<% productos[i].nombreProducto %> ">
+						</figure>
+						<article class="product-box_data">
+							<h2><%= productos[i].nombreProducto %> </h2>
+							<p><%= productos[i].descripcion %></p>
+							<p>Comentarios: 12</p>
+						</article>
+					</a>
+			</section>
+		</div>
+		<% } %>
+	
 
 	
 
