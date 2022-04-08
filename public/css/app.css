@@ -1,5 +1,5 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;400&display=swap');
 
 
 /*====== Variables ======*/
@@ -9,7 +9,7 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #43884c;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -67,7 +67,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: #43a047;
+  background-color: #7ed957;
 }
 
 .main-header_home-link,
@@ -167,7 +167,7 @@ hr {
 }
 
 .products-title {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 400;
   color: var(--gray);
   font-family: 'Bebas Neue', cursive;
@@ -425,6 +425,7 @@ hr {
 }
 .comments .user{
   font-size: 1.7em;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*====== Formularios ======*/
@@ -469,16 +470,18 @@ textarea.form-input {
   border-radius: 22px;
   padding: 6px;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .form-register-submit{
   padding: 6px;
-  background: black; 
+  background: rgb(0, 0, 0); 
   color: white;
   font-size: 17px;
   border-radius: 22px;
   text-align: center;
-  border: black ;
+  border: rgb(0, 0, 0);
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*====== Profile ======*/
@@ -489,12 +492,13 @@ textarea.form-input {
 }
 
 .foto-perfil{
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn{

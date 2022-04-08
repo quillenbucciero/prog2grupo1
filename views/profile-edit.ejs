@@ -15,19 +15,14 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form method="get" action="profile/edit">
-					<label for="usuario">Nombre de Usuario</label><br> 
-					<input type="text" id="usuario" name="usuario"><br>
-					<label for="email">Email</label><br>
-					<input type="email" id="email" name="email"><br>
-					<label for="contraseña">Contraseña</label><br> 
-					<input type="text" id="contraseña" name="contraseña"><br>
-					<label for="fecha">Fecha de Nacimiento </label><br>
-					<input type="number" id="fecha" name="fecha"><br>
-					<label for="DNI">Numero de Documento</label><br>
-					<input type="number" id="DNI" name="DNI"><br>
-					<label for="foto">Foto de Perfil</label><br>
-					<input type="file" id="foto" name="foto"><br>
+				<form method="get" action="profile/edit" class="form-register-container">
+					<input type="email" name="" class="form-register" placeholder="Ingrese su email">
+					<input type="text" name="" class="form-register" placeholder="Nombre de usuario">
+					<input type="text" class="form-register" name="contraseña" placeholder="Contraseña">
+					<input type="date" class="form-register" name="fecha">
+					<input type="number" class="form-register" name="DNI" placeholder="Número de documento">
+					<input type="file" class="form-register" name="foto">
+					<input type="submit" class="form-register-submit">
 				</form>
 			</h2>
 
