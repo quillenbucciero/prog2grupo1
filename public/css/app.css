@@ -1,11 +1,12 @@
 /*====== Fonts ======*/
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;400&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet');
 
 /*====== Variables ======*/
 :root {
-  --dark-blue: #104f92;
-  --light-blue: #89d5c9;
+  --dark-blue: #77d374;
+  --light-blue: #77d374;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #43884c;
@@ -67,12 +68,23 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: #7ed957;
+  background-color: #424949;
 }
 
 .main-header_home-link,
 .main-header_credit-link {
   display: block;
+}
+
+.main-header a {
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  font-size: large;
+}
+.main-header button {
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  font-size: large;
 }
 
 .main-header_credit-link {
@@ -139,7 +151,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color: #1b852c;
 }
 
 .left-navbar a,
@@ -153,11 +165,10 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-}
+} 
 
 
 /*====== Products ======*/
@@ -502,7 +513,7 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
+  background-color: #77d374;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
