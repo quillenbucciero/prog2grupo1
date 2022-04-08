@@ -204,6 +204,7 @@ hr {
   font-size: 2.4em;
   font-weight: 300;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .product-box_data span {
@@ -279,12 +280,14 @@ hr {
   color: var(--gray);
   font-size: 2.4em;
   font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .footer-data p {
   color: var(--gray);
   font-size: 1.5em;
   font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .sub-footer {
