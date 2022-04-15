@@ -111,4 +111,3 @@ const data = {
 
 module.exports = data;
 
-/*Productos y comentarios son arrays, los productos se van a tener que renderizar. La informacion la tenemos que sacar del modulo*/
