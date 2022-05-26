@@ -1,4 +1,4 @@
-const data = require('../db/data');
+const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db CAMBIAR
 const user = db.User;
 
@@ -17,7 +17,7 @@ const indexController = {
     procesarRegister : (req, res) => {
         let info = req.body;
         let usuario = {
-            name : info.name,
+            user : info.user,
             email : info.email,
             password : bcrypt.hashSync(info.password, 10),
             remember_token : "false",
