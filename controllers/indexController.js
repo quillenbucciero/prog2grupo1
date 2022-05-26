@@ -17,7 +17,7 @@ const indexController = {
     procesarRegister : (req, res) => {
         let info = req.body;
         let usuario = {
-            user : info.user,
+            username : info.username,
             email : info.email,
             password : bcrypt.hashSync(info.password, 10),
             remember_token : "false",
