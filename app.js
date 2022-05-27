@@ -22,6 +22,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*Requiero session*/
+const session = require('express-session');
+
+/*Ejecuto session*/
+app.use(session( { secret: "prog2grupo",
+				resave: false,
+				saveUninitialized: true 
+}));
+
+/*Middleware de session*/
+app.use(function (req,res,next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user;
+    return next()
+  }
+  return next();
+});
+
+
 /*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
 app.use('/product' , productsRouter); 

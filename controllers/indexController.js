@@ -1,4 +1,6 @@
-const data = require('../db/data');
+const data = require('../db/data'); //BASE DE DATOS ANTERIOR, BORRAR
+const db = require('../database/models');
+const nombreDB = db.nombreDB //USAR ALIAS DEL MODELO
 
 const indexController = {
     index: function (req,res) {
