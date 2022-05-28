@@ -47,7 +47,15 @@ const indexController = {
 
                 let passEncriptada = bcrypt.compareSync(info.password , result.password)
                 if (passEncriptada) {
+
+                    req.session.user = result.dataValues;
+
+                    if (req.body.remember != undefined) {
+                        res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                    }
+
                     return res.redirect("/profile")
+
                 } else {
                     return res.send("Existe el mail " +  result.email + " pero la clave es incorrecta");
                 }
@@ -61,6 +69,13 @@ const indexController = {
         });
 
     },
+    logout: (req,res) => {
+
+        req.session.destroy();
+        res.clearCookie('userId');      
+        return res.render("registerUsuer")
+        
+    } 
 };
 
 module.exports = indexController;

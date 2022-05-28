@@ -10,7 +10,10 @@ var indexRouter = require('./routes/index');
 const productsRouter = require('./routes/product');
 const profileRouter = require('./routes/profile');
 const searchResultsRouter = require('./routes/search-results')
-const usersRouter = require('./routes/users');
+
+/* Requerimiento de db */ 
+
+const db = require('./database/models');
 
 var app = express();
 
@@ -27,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const session = require('express-session');
 
 /*Ejecuto session*/
-app.use(session( { secret: "prog2grupo",
+app.use(session( { secret: "prog2grupo1",
 				resave: false,
 				saveUninitialized: true 
 }));
@@ -41,13 +44,37 @@ app.use(function (req,res,next) {
   return next();
 });
 
+/* Middleware se cookies */ 
+
+app.use(function(req, res, next) {
+
+  if (req.cookies.id != undefined && req.session.user == undefined) {
+    
+    let idUserCookie = req.cookies.id;
+   
+    db.User.findByPK(idUserCookie)
+    .then((user) => {
+      req.session.user = user.dataValues; // aca guardo el id
+      res.locals.user = user.dataValues; //quiero q guardes en locals y en session lo q me venga del navegador
+      return next();
+
+    }).catch((err) => {
+
+      console.log(err);
+
+    });
+  }  else {
+    return next();
+    }
+  
+});
+
 
 /*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
 app.use('/product' , productsRouter); 
 app.use('/profile', profileRouter);
 app.use('/search-results', searchResultsRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
