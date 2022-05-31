@@ -15,23 +15,27 @@ const indexController = {
         return res.render('register')
     },
     procesarRegister : (req, res) => {
+
+        let profilePhoto = req.file.filename;
+
         let info = req.body;
-        let usuario = {
-            username : info.username,
+        let usuario = { 
+            username: info.username,
             email : info.email,
             password : bcrypt.hashSync(info.password, 10),
             remember_token : "false",
             created_at : new Date(),
             updated_at :  new Date(),
+            fotoDePerfil : profilePhoto
         }
 
         user.create(usuario)
         .then((result) => {
-            return res.redirect("/profile")
+            return res.redirect("/login")
         }).catch((err) => {
-            return res.send(err)
+            console.log(err);
         });
-        
+
     },
     login: function (req,res) {
         return res.render('login')
