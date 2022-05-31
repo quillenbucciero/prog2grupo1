@@ -11,18 +11,64 @@ const productsRouter = require('./routes/product');
 const profileRouter = require('./routes/profile');
 const searchResultsRouter = require('./routes/search-results')
 
+/* Requerimiento de db */ 
+
+const db = require('./database/models');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/*Requiero session*/
+const session = require('express-session');
+
+/*Ejecuto session*/
+app.use(session( { secret: "prog2grupo1",
+				resave: false,
+				saveUninitialized: true 
+}));
+
+/*Middleware de session*/
+app.use(function (req,res,next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user;
+    return next()
+  }
+  return next();
+});
+
+/* Middleware se cookies */ 
+
+app.use(function(req, res, next) {
+
+  if (req.cookies.id != undefined && req.session.user == undefined) {
+    
+    let idUserCookie = req.cookies.id;
+   
+    db.User.findByPK(idUserCookie)
+    .then((user) => {
+      req.session.user = user.dataValues; // aca guardo el id
+      res.locals.user = user.dataValues; //quiero q guardes en locals y en session lo q me venga del navegador
+      return next();
+
+    }).catch((err) => {
+
+      console.log(err);
+
+    });
+  }  else {
+    return next();
+    }
+  
+});
+
 
 /*Inicio de rutas, los prefijos*/
 app.use('/', indexRouter);
