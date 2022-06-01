@@ -1,6 +1,6 @@
 module.exports = function(sequelize, dataTypes){
     
-    let alias = 'prog2'
+    let alias = 'prog2Comentarios'
 
     let cols = {
         id: {
@@ -15,20 +15,20 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING
         },
         producto_id: {
-
+            type: dataTypes.INTEGER
         },
         usuario_id: {
-
+            type: dataTypes.INTEGER
         }
     }
     let config = {
-        tableName: 'movies', 
+        tableName: 'Comentarios', 
         timestamps: false, 
         underscored: true, 
     }
 
-    const prog2 = sequelize.define(alias, cols, config);
+    const Comentarios = sequelize.define(alias, cols, config);
 
-    return prog2;
+    return Comentarios;
 
 }

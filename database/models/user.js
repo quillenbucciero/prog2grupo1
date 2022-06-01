@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes){
     
-    let alias = 'prog2';  
+    let alias = 'prog2-Users';  
 ​
     let cols = {
         id: {
@@ -41,13 +41,13 @@ module.exports = function (sequelize, dataTypes){
     }
 
     let config = {
-        tableName : "users",
+        tableName : "Users",
         timestamps:true,
         underscored: true, 
     };
 
-    const prog2 = sequelize.define(alias, cols, config);
+    const Users = sequelize.define(alias, cols, config);
 
-    return prog2;
+    return Users;
 
 }
