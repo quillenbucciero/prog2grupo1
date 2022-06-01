@@ -1,37 +1,52 @@
 const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db 
-const user = db.User; //Alias de la db
+const User = db.User; //Alias de la db
 
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
 
 const indexController = {
     index: function (req,res) {
-        return res.render('index', {
-            data: data.producto,
+
+        db.Productos.findAll( {
+            limit: 8,
+            order: ['created_at', 'DESC']
         })
+        .then(function (result) {
+            return res.render('index', {
+                data: result,
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
     },
     register: function (req,res) {
         return res.render('register')
     },
     procesarRegister : (req, res) => {
+
+        let profilePhoto = req.file.filename;
+
         let info = req.body;
-        let usuario = {
-            username : info.username,
+        let usuario = { 
+            username: info.username,
             email : info.email,
             password : bcrypt.hashSync(info.password, 10),
             remember_token : "false",
+            fechaDeNacimiento: info.date,
+            documento: info.doc,
             created_at : new Date(),
             updated_at :  new Date(),
+            fotoDePerfil : profilePhoto
         }
 
         user.create(usuario)
         .then((result) => {
             return res.redirect("/profile")
         }).catch((err) => {
-            return res.send(err)
+            console.log(err);
         });
-        
+
     },
     login: function (req,res) {
         return res.render('login')
