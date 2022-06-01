@@ -1,12 +1,15 @@
 module.exports = function(sequelize, dataTypes){
     
-    let alias = 'prog2-Productos'
+    let alias = 'Productos'
 
     let cols = {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER
+        },
+        nombre: {
+            type: dataTypes.STRING
         },
         descripcion : {
             type: dataTypes.STRING,

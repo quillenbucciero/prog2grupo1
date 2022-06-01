@@ -1,6 +1,6 @@
 module.exports = function(sequelize, dataTypes){
     
-    let alias = 'prog2Comentarios'
+    let alias = 'Comentarios'
 
     let cols = {
         id: {
