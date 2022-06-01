@@ -73,7 +73,7 @@ const indexController = {
 
         req.session.destroy();
         res.clearCookie('userId');      
-        return res.render("registerUsuer")
+        return res.redirect("/")
         
     } 
 };
