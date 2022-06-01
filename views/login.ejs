@@ -26,7 +26,11 @@
 
 				</form>
 			</h2>
-
+			
+			<% if(locals.erroresLogin){ %>
+				<p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
+				</p>
+			<% } %>
 
 	<!-- Footer -->		
 		<%- include('./partials/footer') %> 
