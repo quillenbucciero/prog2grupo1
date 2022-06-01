@@ -1,15 +1,24 @@
 const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db 
-const user = db.User; //Alias de la db
+const User = db.User; //Alias de la db
 
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
 
 const indexController = {
     index: function (req,res) {
-        return res.render('index', {
-            data: data.producto,
+
+        db.Productos.findAll( {
+            limit: 8,
+            order: ['created_at', 'DESC']
         })
+        .then(function (result) {
+            return res.render('index', {
+                data: result,
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
     },
     register: function (req,res) {
         return res.render('register')
@@ -24,6 +33,8 @@ const indexController = {
             email : info.email,
             password : bcrypt.hashSync(info.password, 10),
             remember_token : "false",
+            fechaDeNacimiento: info.date,
+            documento: info.doc,
             created_at : new Date(),
             updated_at :  new Date(),
             fotoDePerfil : profilePhoto
@@ -31,7 +42,7 @@ const indexController = {
 
         user.create(usuario)
         .then((result) => {
-            return res.redirect("/login")
+            return res.redirect("/profile")
         }).catch((err) => {
             console.log(err);
         });

@@ -15,9 +15,11 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING
         },
         producto_id: {
+            type: dataTypes.INTEGER
 
         },
         usuario_id: {
+            type: dataTypes.INTEGER
 
         }
     }
