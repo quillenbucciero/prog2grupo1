@@ -5,7 +5,9 @@ let Productos = db.Productos;
 const productController = {
     index: function (req, res) {
         return res.render('product', {
-            data : data.comentarios
+            comentarios : data.comentarios,
+            productos: data.producto,
+            idSelected: req.params.id
         })
     },
     add: function(req, res) {
