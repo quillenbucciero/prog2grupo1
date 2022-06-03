@@ -5,19 +5,13 @@
 
 			<div class="row align-items-center">
 				<!-- En vez del logo, la foto de perfil -->
-				<% if(locals.user =! undefined) {%> 
+		
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
 						<img src="/images/users/ <%= user.fotoDePerfil %>" alt="Foto de perfil de <%= user.nombre %> ">
 					</a>
 				</div>
-				<% }else{ %> 
-				<div class="col-5 col-md-2">
-					<a href="/" class="main-header_home-link">
-						<img src="/images/logo.png">
-					</a>
-				</div>
-				<% } %> 
+			
 	
 				<div class="col-7 col-md-6">
 					<form action="/search-results/id" method="GET" class="search-form">
@@ -41,12 +35,10 @@
 					<nav class="main-navbar">
 					<ul class="left-navbar">
 						<li><a href="/">Todos los productos</a></li>
-					<% if (locals.user != undefined) { %>
+				
 						<li><a href="/product/id">Cargar productos</a></li>
-					<% } %>
-					</ul>
-		
-					<% if (locals.user != undefined) { %>
+					
+					</ul>		
 					
 					<ul class="right-navbar">
 						<!--link a  mi perfil-->
@@ -59,25 +51,8 @@
 						</a>
 					</li>
 					<li>
-						<!--<form action="/" method="get">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form> -->
-						<a href="/"> Cerrar sesión <i class="fas fa-sign-in-alt"></i> </a>
+							<a href="/"> Cerrar sesión <i class="fas fa-sign-in-alt"></i> </a>
 					</li>
-					<% } %>
-
-					<% else { %>
-					<li>
-						<a href="/register">Creá tu cuenta <i class="far fa-address-card"></i>
-						</a>
-					</li>
-					<li>
-						<a href="/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-					</li> -->
-
-					<% } %>
 					
 					
 				</ul>
