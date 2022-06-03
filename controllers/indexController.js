@@ -33,19 +33,18 @@ const indexController = {
     },
     procesarRegister : (req, res) => {
 
-        let profilePhoto = req.file.filename;
+        let foto_de_perfil = req.file.filename;
 
         let info = req.body;
         let usuario = { 
-            username: info.username,
+            nombre : info.nombre,
             email : info.email,
-            password : bcrypt.hashSync(info.password, 10),
-            remember_token : "false",
-            fechaDeNacimiento: info.date,
-            documento: info.doc,
+            contrasena : bcrypt.hashSync(info.password, 10),
+            fecha_de_nacimiento: info.fecha_de_nacimiento,
+            documento: info.documento,
             created_at : new Date(),
             updated_at :  new Date(),
-            fotoDePerfil : profilePhoto
+            foto_de_perfil: foto_de_perfil
         }
 
         user.create(usuario)
