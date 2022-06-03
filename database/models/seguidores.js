@@ -12,7 +12,7 @@ module.exports = function(sequelize, dataTypes){
 
     }
     let config = {
-        tableName: 'Seguidores', 
+        tableName: 'seguidores', 
         timestamps: false, 
         underscored: true, 
     }
