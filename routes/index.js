@@ -1,5 +1,4 @@
 const express = require('express');
-const { EmptyResultError } = require('sequelize/types');
 const router = express.Router();
 const indexController = require('../controllers/indexController');
 
