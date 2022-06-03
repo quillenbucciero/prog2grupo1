@@ -20,14 +20,14 @@ module.exports = function (sequelize, dataTypes){
         contrasena: {
             type: dataTypes.STRING
         },
-        fechaDeNacimiento : {
+        fecha_de_nacimiento : {
             type: dataTypes.DATE,
         },
         documento : {
             type: dataTypes.INTEGER,
 
         },
-        fotoDePerfil: {
+        foto_de_perfil: {
             type: dataTypes.STRING
         },
         created_at : {
