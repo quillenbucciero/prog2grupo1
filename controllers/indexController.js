@@ -12,10 +12,13 @@ const indexController = {
             limit: 8,
             order: ['created_at', 'DESC'],
             include: [
-                {association: "productos"}
+                {association: "usuarios"}
             ]
         })
         .then(function (result) {
+
+            console.log(result);
+
             return res.render('index', {
                 data: result,
             })
