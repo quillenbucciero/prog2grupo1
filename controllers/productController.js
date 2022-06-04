@@ -8,12 +8,12 @@ const productController = {
         Productos.findByPk(id).then((result) =>{
     
           let fecha = result.created_at;
-          let fechaFormateada = new Date(fecha).toISOString().slice(0,10);
+          /*let fechaFormateada = new Date(fecha).toISOString().slice(0,10);*/
     
           let producto = {
             nombre: result.title,
             /*imagen : req.file.filename */
-            created_at : fechaFormateada,
+            created_at : fecha,
             descripcion : result.descripcion,
           }
           

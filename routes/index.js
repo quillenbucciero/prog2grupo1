@@ -14,7 +14,8 @@ let storage = multer.diskStorage({
     		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
 	}
 });
-let upload = multer({ storage: storage });
+let upload = multer({ storage: storage }); 
+
 
 /* GET home page. */
 router.get('/', indexController.index);
