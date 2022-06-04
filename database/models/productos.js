@@ -34,19 +34,19 @@ module.exports = function(sequelize, dataTypes){
     }
     let config = {
         tableName: 'productos', 
-        timestamps: false, 
+        timestamps: true, 
         underscored: true, 
     }
 
     const Productos = sequelize.define(alias, cols, config);
 
     //Relación con usuarios.
-    Productos.associate = function (models) { //productos
+    /*Productos.associate = function (models) { //productos
         Productos.belongsTo(models.Usuarios, {
             as: "usuarios",
             foreignKey: "usuario_id"
         })
-    }
+    }*/
     
     return Productos;
 

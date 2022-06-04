@@ -21,7 +21,7 @@ router.get('/', indexController.index);
 
 router.get('/register', indexController.register);
 
-router.post('/register', upload.single('profilePhoto'), indexController.procesarRegister);
+router.post('/register', upload.single('imagen'), indexController.procesarRegister);
 
 router.get('/login', indexController.login);
 

@@ -1,6 +1,7 @@
-const data = require('../db/data'); //esto seguro hay q sacarlo
+const data = require('../db/data'); //DB vieja
 const db = require("../database/models"); //Requiero db 
-const User = db.User; //Alias de la db
+const Productos = db.Productos;
+const Usuarios = db.Usuarios;
 
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
@@ -8,24 +9,21 @@ const bcrypt = require('bcryptjs');
 const indexController = {
     index: function (req,res) {
 
-        db.Productos.findAll( {
+        Productos.findAll( {
             limit: 8,
             order: [
                 ['created_at', 'desc'] 
             ],
-            include: [
+            /*include: [
                 {association: "usuarios"}
-            ]
+            ] */
         })
         .then(function (result) {
-
-            console.log(result);
-
             return res.render('index', {
                 data: result,
             })
         }).catch((err) => {
-            console.log(err);
+            "El error es" + err;
         });
     },
     register: function (req,res) {
@@ -33,7 +31,7 @@ const indexController = {
     },
     procesarRegister : (req, res) => {
 
-        let foto_de_perfil = req.file.filename;
+        /*let foto_de_perfil = req.file.filename;*/
 
         let info = req.body;
         let usuario = { 
@@ -44,10 +42,10 @@ const indexController = {
             documento: info.documento,
             created_at : new Date(),
             updated_at :  new Date(),
-            foto_de_perfil: foto_de_perfil
+            /*foto_de_perfil: foto_de_perfil*/
         }
 
-        user.create(usuario)
+        Usuarios.create(usuario)
         .then((result) => {
             return res.redirect("/profile")
         }).catch((err) => {
@@ -62,7 +60,7 @@ const indexController = {
         let info = req.body;
         let filtro = {where : [ { email : info.email}]};
 
-        user.findOne(filtro)
+        Usuarios.findOne(filtro)
         .then((result) => {
             
             if (result != null) {
@@ -70,7 +68,7 @@ const indexController = {
                 let passEncriptada = bcrypt.compareSync(info.password , result.password)
                 if (passEncriptada) {
 
-                    req.session.user = result.dataValues;
+                    req.session.Usuarios = result.dataValues;
 
                     if (req.body.remember != undefined) {
                         res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )

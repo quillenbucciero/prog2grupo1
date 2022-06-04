@@ -12,7 +12,6 @@ const profileRouter = require('./routes/profile');
 const searchResultsRouter = require('./routes/search-results')
 
 /* Requerimiento de db */ 
-
 const db = require('./database/models');
 
 var app = express();
@@ -45,14 +44,13 @@ app.use(function (req,res,next) {
 });
 
 /* Middleware se cookies */ 
-
 app.use(function(req, res, next) {
 
   if (req.cookies.id != undefined && req.session.user == undefined) {
     
     let idUserCookie = req.cookies.id;
    
-    db.User.findByPK(idUserCookie)
+    db.Usuarios.findByPK(idUserCookie)
     .then((user) => {
       req.session.user = user.dataValues; // aca guardo el id
       res.locals.user = user.dataValues; //quiero q guardes en locals y en session lo q me venga del navegador

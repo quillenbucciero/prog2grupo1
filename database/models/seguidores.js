@@ -10,12 +10,13 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER
         },
 
-    }
+    };
+
     let config = {
         tableName: 'seguidores', 
         timestamps: false, 
         underscored: true, 
-    }
+    };
 
     const Seguidores = sequelize.define(alias, cols, config);
 
