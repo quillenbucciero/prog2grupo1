@@ -3,9 +3,13 @@
 <!--Head-->
 
 <body>
-	<!-- Header -->
-	<%- include('./partials/header') %> 
-	<!-- /Header -->
+		<!--Header-->
+		<% if (locals.user != undefined) { %>
+			<%- include('./partials/headerLogueado') %>
+		<% } else {%>
+			<%- include('./partials/headerDesloagueado') %>
+		<% } %> 
+		<!--Header-->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
