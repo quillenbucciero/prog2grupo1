@@ -1,4 +1,3 @@
-const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db 
 const User = db.User; //Alias de la db
 
@@ -13,9 +12,9 @@ const indexController = {
             order: [
                 ['created_at', 'desc'] 
             ],
-            include: [
+            /*include: [
                 {association: "usuarios"}
-            ]
+            ]*/
         })
         .then(function (result) {
 
@@ -32,8 +31,6 @@ const indexController = {
         return res.render('register')
     },
     procesarRegister : (req, res) => {
-
-        let foto_de_perfil = req.file.filename;
 
         let erroresRegister = {};
 
@@ -66,7 +63,7 @@ const indexController = {
                 documento: req.body.documento,
                 created_at : new Date(),
                 updated_at :  new Date(),
-                /*foto_de_perfil: foto_de_perfil*/
+                foto_de_perfil: req.file.filename
             };
 
             Usuarios.create(usuarioNuevo)
