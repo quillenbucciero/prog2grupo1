@@ -42,10 +42,6 @@ const indexController = {
             erroresRegister.message = "El email está vacío";
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
-        }else if (req.body.email != undefined) {
-            erroresRegister.message = "El email ya se encuentra registrado";
-            res.locals.erroresRegister = erroresRegister;
-            return res.render('register')
         }else if (req.body.contrasena == "") {
             erroresRegister.message = "La contraseña está vacía";
             res.locals.erroresRegister = erroresRegister;
