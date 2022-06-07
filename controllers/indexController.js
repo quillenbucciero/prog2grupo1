@@ -35,26 +35,6 @@ const indexController = {
 
         let foto_de_perfil = req.file.filename;
 
-<<<<<<< HEAD
-        let info = req.body;
-        let usuario = { 
-            nombre : info.nombre,
-            email : info.email,
-            contrasena : bcrypt.hashSync(info.password, 10),
-            fecha_de_nacimiento: info.fecha_de_nacimiento,
-            documento: info.documento,
-            created_at : new Date(),
-            updated_at :  new Date(),
-            foto_de_perfil: foto_de_perfil
-        }
-
-        user.create(usuario)
-        .then((result) => {
-            return res.redirect("/profile")
-        }).catch((err) => {
-            console.log(err);
-        });
-=======
         let erroresRegister = {};
 
         if (req.body.nombre = "") {
@@ -88,7 +68,6 @@ const indexController = {
                 updated_at :  new Date(),
                 /*foto_de_perfil: foto_de_perfil*/
             };
->>>>>>> 89f184aa0f6341ba088464e3480203a3048614db
 
             Usuarios.create(usuarioNuevo)
             .then((result) => {
