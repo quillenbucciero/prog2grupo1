@@ -1,6 +1,6 @@
+const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db 
-const Productos = db.Productos;
-const Usuarios = db.Usuarios;
+const User = db.User; //Alias de la db
 
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
@@ -8,19 +8,24 @@ const bcrypt = require('bcryptjs');
 const indexController = {
     index: function (req,res) {
 
-        Productos.findAll( {
+        db.Productos.findAll( {
             limit: 8,
-            order: [['created_at', 'desc']],
-            /*include: [
+            order: [
+                ['created_at', 'desc'] 
+            ],
+            include: [
                 {association: "usuarios"}
-            ] */
+            ]
         })
-        .then((result) => {
+        .then(function (result) {
+
+            console.log(result);
+
             return res.render('index', {
                 data: result,
             })
         }).catch((err) => {
-            "El error es" + err;
+            console.log(err);
         });
     },
     register: function (req,res) {
@@ -28,25 +33,25 @@ const indexController = {
     },
     procesarRegister : (req, res) => {
 
-        /*let foto_de_perfil = req.file.filename;*/
+        let foto_de_perfil = req.file.filename;
 
         let info = req.body;
-        let usuarioNuevo = { 
+        let usuario = { 
             nombre : info.nombre,
             email : info.email,
-            contrasena : bcrypt.hashSync(info.contrasena, 10),
+            contrasena : bcrypt.hashSync(info.password, 10),
             fecha_de_nacimiento: info.fecha_de_nacimiento,
             documento: info.documento,
             created_at : new Date(),
             updated_at :  new Date(),
-            /*foto_de_perfil: foto_de_perfil*/
-        };
+            foto_de_perfil: foto_de_perfil
+        }
 
-        Usuarios.create(usuarioNuevo)
+        user.create(usuario)
         .then((result) => {
-            res.redirect("/profile")
+            return res.redirect("/profile")
         }).catch((err) => {
-            "Este es el error" +err;
+            console.log(err);
         });
 
     },
@@ -57,7 +62,7 @@ const indexController = {
         let info = req.body;
         let filtro = {where : [ { email : info.email}]};
 
-        Usuarios.findOne(filtro)
+        user.findOne(filtro)
         .then((result) => {
             
             if (result != null) {
@@ -65,7 +70,7 @@ const indexController = {
                 let passEncriptada = bcrypt.compareSync(info.password , result.password)
                 if (passEncriptada) {
 
-                    req.session.Usuarios = result.dataValues;
+                    req.session.user = result.dataValues;
 
                     if (req.body.remember != undefined) {
                         res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )

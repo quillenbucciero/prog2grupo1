@@ -19,7 +19,7 @@
 			</div>
 			
 			<h2 class="col-12"> <i> 
-				<form action="/profile" method="get" class="form-register-container">
+				<form action="/profile" method="post" class="form-register-container">
 					<input type="email" name="email" class="form-register" placeholder="Ingrese su email">
 					<input type="password" name="password" class="form-register" placeholder="Contraseña">
 					<div class="checkbox">
@@ -31,7 +31,7 @@
 				</form>
 			</h2>
 			
-			<% if(locals.erroresLogin){ %>
+			<% if(locals.erroresLogin != undefined){ %>
 				<p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
 				</p>
 			<% } %>
