@@ -15,7 +15,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[id].nombreProducto %></h2> 
+			<h2 class="products-title"><%= producto[1].nombre %></h2> 
 			<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p>
@@ -23,12 +23,12 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src= <%= productos[id].imagen %>  alt="Leche de Almendras" class="product-detail-img">
-					<p class="product-detail-description"> <%= productos[id].descripcion %> </p>
+					<img src= <%= producto[1].imagen %>  alt="Leche de Almendras" class="product-detail-img">
+					<p class="product-detail-description"> <%= producto[1].descripcion %> </p>
 				</article>
 
 			<!--Comentarios-->
-				<div class="col-12 col-lg-4">
+				<!--<div class="col-12 col-lg-4">
 					<section class="comments">
 						<% for( let i = 0; i < data.length; i++ ) { %>
 							<article>
@@ -47,7 +47,7 @@
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<hr>
-				</div>
+				</div>-->
 			<!--Comentarios-->
 			</div>
 		</div>
