@@ -35,6 +35,7 @@ const indexController = {
 
         let foto_de_perfil = req.file.filename;
 
+<<<<<<< HEAD
         let info = req.body;
         let usuario = { 
             nombre : info.nombre,
@@ -53,7 +54,49 @@ const indexController = {
         }).catch((err) => {
             console.log(err);
         });
+=======
+        let erroresRegister = {};
 
+        if (req.body.nombre = "") {
+            erroresRegister.message = "El nombre está vacío";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        } else if (req.body.email = "") {
+            erroresRegister.message = "El email está vacío";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.email != undefined) {
+            erroresRegister.message = "El email ya se encuentra registrado";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.contrasena == "") {
+            erroresRegister.message = "La contraseña está vacía";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.contrasena.length < 3)  {
+            erroresRegister.message = "La contraseña debe tener al menos tres carácteres";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else {
+            let usuarioNuevo = { 
+                nombre : req.body.nombre,
+                email : req.body.email,
+                contrasena : bcrypt.hashSync(req.body.contrasena, 10),
+                fecha_de_nacimiento: req.body.fecha_de_nacimiento,
+                documento: req.body.documento,
+                created_at : new Date(),
+                updated_at :  new Date(),
+                /*foto_de_perfil: foto_de_perfil*/
+            };
+>>>>>>> 89f184aa0f6341ba088464e3480203a3048614db
+
+            Usuarios.create(usuarioNuevo)
+            .then((result) => {
+                return res.redirect("/profile")
+            }).catch((err) => {
+                "Este es el error" +err;
+            });
+        }       
     },
     login: function (req,res) {
         return res.render('login')

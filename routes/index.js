@@ -22,13 +22,13 @@ router.get('/', indexController.index);
 
 router.get('/register', indexController.register);
 
-router.post('/register', upload.single('imagen'), indexController.procesarRegister);
+router.post('/register', indexController.procesarRegister);
 
 router.get('/login', indexController.login);
 
 router.post('/login', indexController.procesarLogin); 
 
-router.post('/', indexController.logout);
+router.post('/logout', indexController.logout);
 
 module.exports = router;
 

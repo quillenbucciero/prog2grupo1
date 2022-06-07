@@ -20,6 +20,11 @@
 			</div>
 
 			<h2 class="col-12"> <i> 
+				<% if(locals.erroresRegister){ %>
+					<p class="mensajeError" style="color: red;"> <%= locals.erroresRegister.message %>
+					</p>
+				<% } %>
+				
 				<form action="/register" method="post" class="form-register-container" enctype="multipart/form-data">
 
 					<input type="email" name="email" class="form-register" placeholder="Ingrese su email" value="">
