@@ -34,12 +34,12 @@ const indexController = {
 
         let erroresRegister = {};
 
-        if (req.body.nombre = "") {
+        if (req.body.nombre == "") {
             erroresRegister.message = "El nombre está vacío";
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
-        } else if (req.body.email = "") {
-            erroresRegister.message = "El email está vacío";
+        } else if (req.body.email == "") {
+            erroresRegister.message == "El email está vacío";
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
         }else if (req.body.contrasena == "") {
