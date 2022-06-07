@@ -10,11 +10,11 @@ const indexController = {
         db.Productos.findAll( {
             limit: 8,
             order: [
-                ['created_at', 'desc'] 
+                ['created_at', 'DESC'] 
             ],
-            /*include: [
+            include: [
                 {association: "usuarios"}
-            ]*/
+            ]
         })
         .then(function (result) {
 
