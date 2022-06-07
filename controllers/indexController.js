@@ -1,4 +1,3 @@
-const data = require('../db/data'); //esto seguro hay q sacarlo
 const db = require("../database/models"); //Requiero db 
 const User = db.User; //Alias de la db
 
@@ -13,9 +12,9 @@ const indexController = {
             order: [
                 ['created_at', 'desc'] 
             ],
-            include: [
+            /*include: [
                 {association: "usuarios"}
-            ]
+            ]*/
         })
         .then(function (result) {
 
@@ -33,28 +32,6 @@ const indexController = {
     },
     procesarRegister : (req, res) => {
 
-        let foto_de_perfil = req.file.filename;
-
-<<<<<<< HEAD
-        let info = req.body;
-        let usuario = { 
-            nombre : info.nombre,
-            email : info.email,
-            contrasena : bcrypt.hashSync(info.password, 10),
-            fecha_de_nacimiento: info.fecha_de_nacimiento,
-            documento: info.documento,
-            created_at : new Date(),
-            updated_at :  new Date(),
-            foto_de_perfil: foto_de_perfil
-        }
-
-        user.create(usuario)
-        .then((result) => {
-            return res.redirect("/profile")
-        }).catch((err) => {
-            console.log(err);
-        });
-=======
         let erroresRegister = {};
 
         if (req.body.nombre = "") {
@@ -86,9 +63,8 @@ const indexController = {
                 documento: req.body.documento,
                 created_at : new Date(),
                 updated_at :  new Date(),
-                /*foto_de_perfil: foto_de_perfil*/
+                foto_de_perfil: req.file.filename
             };
->>>>>>> 89f184aa0f6341ba088464e3480203a3048614db
 
             Usuarios.create(usuarioNuevo)
             .then((result) => {
