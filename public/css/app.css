@@ -469,6 +469,10 @@ hr {
   font-size: 1.4em;
 }
 
+.mensajeError{
+  text-align: center;
+}
+
 textarea.form-input {
   min-height: 140px;
   resize: vertical;

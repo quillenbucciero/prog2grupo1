@@ -30,25 +30,47 @@ const indexController = {
 
         /*let foto_de_perfil = req.file.filename;*/
 
-        let info = req.body;
-        let usuarioNuevo = { 
-            nombre : info.nombre,
-            email : info.email,
-            contrasena : bcrypt.hashSync(info.contrasena, 10),
-            fecha_de_nacimiento: info.fecha_de_nacimiento,
-            documento: info.documento,
-            created_at : new Date(),
-            updated_at :  new Date(),
-            /*foto_de_perfil: foto_de_perfil*/
-        };
+        let erroresRegister = {};
 
-        Usuarios.create(usuarioNuevo)
-        .then((result) => {
-            return res.redirect("/profile")
-        }).catch((err) => {
-            "Este es el error" +err;
-        });
+        if (req.body.nombre = "") {
+            erroresRegister.message = "El nombre está vacío";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        } else if (req.body.email = "") {
+            erroresRegister.message = "El email está vacío";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.email != undefined) {
+            erroresRegister.message = "El email ya se encuentra registrado";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.contrasena == "") {
+            erroresRegister.message = "La contraseña está vacía";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else if (req.body.contrasena.length < 3)  {
+            erroresRegister.message = "La contraseña debe tener al menos tres carácteres";
+            res.locals.erroresRegister = erroresRegister;
+            return res.render('register')
+        }else {
+            let usuarioNuevo = { 
+                nombre : req.body.nombre,
+                email : req.body.email,
+                contrasena : bcrypt.hashSync(req.body.contrasena, 10),
+                fecha_de_nacimiento: req.body.fecha_de_nacimiento,
+                documento: req.body.documento,
+                created_at : new Date(),
+                updated_at :  new Date(),
+                /*foto_de_perfil: foto_de_perfil*/
+            };
 
+            Usuarios.create(usuarioNuevo)
+            .then((result) => {
+                return res.redirect("/profile")
+            }).catch((err) => {
+                "Este es el error" +err;
+            });
+        }       
     },
     login: function (req,res) {
         return res.render('login')
