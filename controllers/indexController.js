@@ -51,15 +51,17 @@ const indexController = {
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
         }else {
+
+            let foto_de_perfil = req.file.filename;
             let usuarioNuevo = { 
-                nombre : req.body.nombre,
                 email : req.body.email,
+                nombre : req.body.nombre,
                 contrasena : bcrypt.hashSync(req.body.contrasena, 10),
                 fecha_de_nacimiento: req.body.fecha_de_nacimiento,
                 documento: req.body.documento,
                 created_at : new Date(),
                 updated_at :  new Date(),
-                foto_de_perfil: req.file.filename
+                foto_de_perfil: foto_de_perfil
             };
 
             Usuarios.create(usuarioNuevo)
