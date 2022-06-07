@@ -56,6 +56,7 @@ const indexController = {
             let usuarioNuevo = { 
                 email : req.body.email,
                 nombre : req.body.nombre,
+                apellido: req.body.apellido,
                 contrasena : bcrypt.hashSync(req.body.contrasena, 10),
                 fecha_de_nacimiento: req.body.fecha_de_nacimiento,
                 documento: req.body.documento,

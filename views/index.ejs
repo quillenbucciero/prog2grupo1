@@ -30,12 +30,12 @@
 					<section class="product-box">
 						<a href= "/product/id/<%= data[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %> ">
+								<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %> <%= data[i].usuarios.apellido%>">
 							</figure>
 							<article class="product-box_data">
 								<h2> <%= data[i].nombre %> </h2>
 								<p> <%= data[i].descripcion %> </p>
-								<p> Cargado a la página por: <%= data[i].usuarios.nombre %></p>
+								<p> Cargado a la página por: <%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido%></p>
 								<p>Comentarios: 12</p>
 							</article>
 						</a>
@@ -58,13 +58,13 @@
 						<section class="product-box">
 							<a href= "/product/id/<%= data[i].id %>">
 								<figure class="product-box_image">
-									<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %> ">
+									<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %> <%= data[i].usuarios.apellido%>">
 								</figure>
 								<article class="product-box_data">
-									<h2> <%= data[i].nombre %> </h2>
+									<h2> <%= data[i].nombre %> <%= data[i].apellido %></h2>
 									<p> <%= data[i].descripcion %> </p>
 									<p>Comentarios: 12</p>
-									<p> Cargado a la página por: <%= data[i].usuarios.nombre %></p>
+									<p> Cargado a la página por: <%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></p>
 								</article>
 							</a>
 						</section>
