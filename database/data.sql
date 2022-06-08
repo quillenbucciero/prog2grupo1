@@ -1,4 +1,4 @@
-CREATE CHEMA prog2;
+CREATE SCHEMA prog2;
 
 USE prog2;
 

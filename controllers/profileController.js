@@ -1,9 +1,10 @@
-let data = require('../db/data');
+const db = require("../database/models"); //Requiero db 
+const Usuarios = db.Usuarios; //Alias de la db
 
 const profileController = {
     index: function(req, res) {
         return res.render('profile',{
-            data: data.usuario,
+            data: Usuarios,
             productos: data.producto
         })
     },

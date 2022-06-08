@@ -1,4 +1,5 @@
-let data = require('../db/data');
+const db = require("../database/models"); //Requiero db 
+const productos = db.Productos; //Alias de la db
 
 const searchController = {
     index: function(req,res){  
