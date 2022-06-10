@@ -3,21 +3,20 @@
 <!--Head-->
 
 <body>
-		<!--Header-->
+    <!--Header-->
 		<% if (locals.user != undefined) { %>
 			<%- include('./partials/headerLogueado') %>
 		<% } else {%>
 			<%- include('./partials/headerDeslogueado') %>
 		<% } %> 
-		<!--Header-->
+	<!--Header-->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
+    <!--Form de editar producto-->
+    <div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Agregar producto</h2>
+				<h2 class="products-title">Editar producto</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 		
 			<h2 class="col-12"> <i> 
 				<form action="/product/add" method="post" class="form-register-container">	
@@ -30,8 +29,11 @@
 			</h2>
 		</div>
 	</div>
+    <!--Form de editar producto-->
+
+    
 	<!-- Footer -->
 	<%- include('./partials/footer') %> 
 	<!-- Footer -->
-		
 </body>
+

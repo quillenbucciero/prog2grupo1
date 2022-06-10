@@ -23,4 +23,8 @@ router.get('/add',productController.add);
 
 router.post('/add', upload.single('imagen'), productController.procesarAgregar);
 
+router.get('/edit', productController.edit);
+
+/*router.post('/edit', upload.single('imagen'), productController.procesarEdit);*/
+
 module.exports = router;
