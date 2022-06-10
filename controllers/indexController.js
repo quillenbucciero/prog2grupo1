@@ -67,7 +67,7 @@ const indexController = {
 
             Usuarios.create(usuarioNuevo)
             .then((result) => {
-                return res.redirect("/profile")
+                return res.redirect("/login")
             }).catch((err) => {
                 "Este es el error" +err;
             });
