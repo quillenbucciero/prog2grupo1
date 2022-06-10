@@ -14,48 +14,24 @@
 	
 	<!-- product detail -->
 		<div class="container products-wrapper">
-		<% for( let i = 0; i < producto.length; i++ ) { %>
 			<div class="d-flex align-items-center">
-				<h2 class="products-title"><%= producto[i].nombre %></h2> 
+				<h2 class="products-title"><%= producto.nombre %></h2> 
 				<p class="product-detail-description">
-					<a href="/product/add">Editar</a>
+					<% if (locals.user != undefined && locals.user.id == producto.usuarios.id) { %>
+						<a href="/product/edit">Editar</a>
+					<% } %>
 				</p>
 			</div>
-		<% } %>
 
-		<% for( let i = 0; i < producto.length; i++ ) { %>
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src= <%= producto[i].imagen %>  alt="<%= producto[i].nombre %>" class="product-detail-img">
-						<p class="product-detail-description"> <%= producto[i].descripcion %> </p>
+						<img src= <%= producto.imagen %>  alt="<%= producto.nombre %>" class="product-detail-img"> <!-- CAMBIAR LINK DESPUES!!-->
+						<p class="product-detail-description"> <%= producto.descripcion %>. Cargado el día: <%= producto.created_at %> por el usuario <a href="/profile"><%= producto.usuarios.nombre %> <%= producto.usuarios.apellido %></a></p>
 					</article>
 	
-				<!--Comentarios-->
-					<!--<div class="col-12 col-lg-4">
-						<section class="comments">
-							<% for( let i = 0; i < data.length; i++ ) { %>
-								<article>
-									<img src="https://via.placeholder.com/35" alt="Foto de perfil">
-									<div class="data">
-										<p class="user">
-											<strong> <a href="/profile"><%= comentarios[i].usuario %></strong></a> 
-											<%= comentarios[i].textoDelComentario %> 
-										</p>
-									</div>
-								</article>  
-							<% } %>
-						</section>
-						<form class="form" action="/product/id" method="get">
-							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-						</form>
-						<hr>
-					</div>-->
-				<!--Comentarios-->
 				</div>
 			</div>
-			<% } %>
 		</div>
 
 	<!-- /product detail -->

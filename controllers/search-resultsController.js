@@ -3,7 +3,7 @@ const Productos = db.Productos; //Alias de la db
 const op = db.Sequelize.Op;
 
 const searchController = {
-    index: function(req,res){  
+    index: function(req,res){  ``
         let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
                                 where:[
