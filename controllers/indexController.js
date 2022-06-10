@@ -65,6 +65,10 @@ const indexController = {
                 foto_de_perfil: foto_de_perfil
             };
 
+            /* aca buscas el usuario por el mail 
+            .then(si hay un usuario entonces mandamos el error, sino lo creamos)
+            .catch() */
+
             Usuarios.create(usuarioNuevo)
             .then((result) => {
                 return res.redirect("/login")
