@@ -76,15 +76,17 @@ const indexController = {
                     .then((result) => {
                         return res.redirect("/login")
                     }).catch((err) => {
-                        console.log("Este es el error" +err);
+                        console.log(err);
                     });
                 } else {
                     erroresRegister.message = "El email ya se encuentra registrado";
                     res.locals.erroresRegister = erroresRegister;
                     return res.render('register');
                 }
-            })
-            .catch() 
+            }).catch((err) => {
+                console.log(err);
+            });
+            
         }       
     },
     login: function (req,res) {

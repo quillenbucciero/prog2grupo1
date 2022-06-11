@@ -34,8 +34,9 @@
 							</figure>
 							<article class="product-box_data">
 								<h2> <%= data[i].nombre %> </h2>
-								<p> <%= data[i].descripcion %> </p> <!-- CAMBIAR LINK DESPUES!!-->
-								<p> Cargado a la página por: <a href="/profile"><%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido%></a></p>
+								<p> <%= data[i].descripcion %> </p> 
+								<p> Cargado a la página por: <%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></p> <!-- CAMBIAR LINK DESPUES!! DE USUARIOS-->
+								
 							</article>
 						</a>
 					</section>
@@ -57,12 +58,12 @@
 						<section class="product-box">
 							<a href= "/product/id/<%= data[i].id %>">
 								<figure class="product-box_image">
-									<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %> <%= data[i].usuarios.apellido%>">
+									<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %>">
 								</figure>
 								<article class="product-box_data">
-									<h2> <%= data[i].nombre %> <%= data[i].apellido %></h2>
-									<p> <%= data[i].descripcion %> </p>
-									<p> Cargado a la página por: <%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></p>
+									<h2> <%= data[i].nombre %> </h2>
+									<p> <%= data[i].descripcion %> </p> 
+									<p> Cargado a la página por: <%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></p> <!-- CAMBIAR LINK DESPUES!! DE USUARIOS-->
 								</article>
 							</a>
 						</section>
