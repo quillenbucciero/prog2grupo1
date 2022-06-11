@@ -40,7 +40,7 @@ const indexController = {
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
         } else if (req.body.email == "") {
-            erroresRegister.message == "El email está vacío";
+            erroresRegister.message = "El email está vacío";
             res.locals.erroresRegister = erroresRegister;
             return res.render('register')
         }else if (req.body.contrasena == "") {
@@ -66,16 +66,25 @@ const indexController = {
                 foto_de_perfil: foto_de_perfil
             };
 
-            /* aca buscas el usuario por el mail 
-            .then(si hay un usuario entonces mandamos el error, sino lo creamos)
-            .catch() */
+            let filtro = {where : [ { email : req.body.email}]};
 
-            Usuarios.create(usuarioNuevo)
+            Usuarios.findOne(filtro)
             .then((result) => {
-                return res.redirect("/login")
-            }).catch((err) => {
-                "Este es el error" +err;
-            });
+                
+                if (!result) {
+                    Usuarios.create(usuarioNuevo)
+                    .then((result) => {
+                        return res.redirect("/login")
+                    }).catch((err) => {
+                        console.log("Este es el error" +err);
+                    });
+                } else {
+                    erroresRegister.message = "El email ya se encuentra registrado";
+                    res.locals.erroresRegister = erroresRegister;
+                    return res.render('register');
+                }
+            })
+            .catch() 
         }       
     },
     login: function (req,res) {

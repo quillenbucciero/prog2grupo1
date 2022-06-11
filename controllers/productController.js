@@ -6,32 +6,26 @@ const productController = {
         let id = req.params.id;
 
         Productos.findByPk(id, {
-            include: {
-              all : true,
-              nested : true
-            }
-      
-            /* {
-              all: true,        //Nos trae todas las associations
-              nested: true      //Nos trae todas las associations anidadas
-            } */            
-          })
-        .then(resultadoProductos =>{
-          
-          let productoSct = resultadoProductos.dataValues;
+          include: [
+            {association: "usuarios"}
+        ]
+        })
+        .then(result =>{
 
           let fecha = result.created_at;
           let fechaFormateada = new Date(fecha).toISOString().slice(0,10);
 
           let producto = {
-            nombre: productoSct.nombre,
-            imagen : productoSct.imagen,
+            nombre: result.dataValues.nombre,
+            imagen : result.dataValues.imagen,
             created_at : fechaFormateada,
-            descripcion : productoSct.descripcion,
+            descripcion : result.dataValues.descripcion,
+            usuarios: result.dataValues.usuarios,
           }
           
           return res.render("product", {
               producto : producto,
+
           })
         }).catch((err) => {
           "Este es el error" +err;
@@ -58,7 +52,10 @@ const productController = {
     }).catch((err) => {
         "Este es el error" +err;
     });
-    }
+    },
+    edit: function(req, res) {
+      return res.render('product-edit');
+   }
 }
 
 module.exports = productController;
