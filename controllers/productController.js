@@ -8,7 +8,7 @@ const productController = {
         Productos.findByPk(id, {
           include: [
             {association: "usuarios"}
-        ]
+          ]
         })
         .then(result =>{
 
@@ -28,7 +28,7 @@ const productController = {
 
           })
         }).catch((err) => {
-          "Este es el error" +err;
+            console.log(err);
         });
     },
     add: (req, res) => {
@@ -36,21 +36,21 @@ const productController = {
     },
     procesarAgregar: (req, res) => {
 
-      let imagenProducto = req.filename.imagen;
+      /*let imagen = req.file.filename;*/
 
       let productoNuevo = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         created_at: new Date(),
-        imagen: imagenProducto,
+        /*imagen: imagen,*/
         updated_at: new Date()
       }
 
       Productos.create(productoNuevo)
       .then((result) => {
-        return res.redirect("/product/add")
-    }).catch((err) => {
-        "Este es el error" +err;
+        return res.redirect("/product")
+      }).catch((err) => {
+        console.log(err);
     });
     },
     edit: function(req, res) {

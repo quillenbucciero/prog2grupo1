@@ -14,7 +14,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
+					<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 		</div>
@@ -26,12 +26,11 @@
 			<section class="product-box">
 					<a href="/product/id/<%= resultados[i].id%>">
 						<figure class="product-box_image">
-							<img src="<%= resultados[i].imagen %> " alt="<% resultados[i].nombreResultados %> ">
+							<img src="<%= resultados[i].imagen %> " alt="<%= resultados[i].nombre %> ">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= resultados[i].nombreProducto %> </h2>
+							<h2><%= resultados[i].nombre %> </h2>
 							<p><%= resultados[i].descripcion %></p>
-							<p>Comentarios: 12</p>
 						</article>
 					</a>
 			</section>
