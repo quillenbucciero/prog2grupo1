@@ -36,13 +36,12 @@ const productController = {
     },
     procesarAgregar: (req, res) => {
 
-      /*let imagen = req.file.filename;*/
-
+      let imagen = req.file.filename;
       let productoNuevo = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         created_at: new Date(),
-        /*imagen: imagen,*/
+        imagen: imagen,
         updated_at: new Date()
       }
 
@@ -54,8 +53,49 @@ const productController = {
     });
     },
     edit: function(req, res) {
-      return res.render('product-edit');
-   }
+
+      let id = req.params.id 
+
+      Productos.findByPk(id)
+      .then((result) => {
+
+        let product = {
+          id: result.id,
+          nombre: result.nombre,
+          descripcion: result.descripcion,
+          imagen: result.imagen,      
+
+        }
+
+        return res.render('product-edit', {
+          producto : product
+        });
+     
+      })
+      },
+      procesarEdit: (req,res)=> {
+        let idEditar = req.params.id;
+
+        let product = {
+          nombre: req.body.nombre,
+          descripcion: req.body.descripcion,
+          /*imagen: imagen,*/
+      
+        }
+        let filtro = { where : { id: idEditar}}
+
+        producto.procesarEdit(product, filtro)
+        .then ((result) => {
+          return res.redirect("/")
+        }).catch((err) => {
+          return res.send(err)
+        })
+
+
+
+   
+      }
+
 }
 
 module.exports = productController;

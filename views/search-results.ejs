@@ -3,12 +3,12 @@
 
 <body>
 		<!--Header-->
-		<% if (locals.user != undefined) { %>
-			<%- include('./partials/headerLogueado') %>
-		<% } else {%>
-			<%- include('./partials/headerDeslogueado') %>
-		<% } %> 
-		<!--Header-->
+	<% if (locals.usuario != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else {%>
+		<%- include('./partials/headerDeslogueado') %>
+	<% } %> 
+	<!--Header-->
 
 	<!-- Resultados -->
 	<div class="container products-wrapper">
