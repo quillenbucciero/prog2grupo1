@@ -36,8 +36,8 @@ app.use(session( { secret: "prog2grupo1",
 
 /*Middleware de session*/
 app.use(function (req,res,next) {
-  if (req.session.user != undefined) {
-    res.locals.user = req.session.user;
+  if (req.session.usuario != undefined) {
+    res.locals.usuario = req.session.usuario;
     return next()
   }
   return next();
@@ -45,15 +45,14 @@ app.use(function (req,res,next) {
 
 /* Middleware se cookies */ 
 app.use(function(req, res, next) {
-
-  if (req.cookies.id != undefined && req.session.user == undefined) {
+  if (req.cookies.id != undefined && req.session.usuario == undefined) {
     
-    let idUserCookie = req.cookies.id;
+    let idCookie = req.cookies.id;
    
-    db.Usuarios.findByPK(idUserCookie)
-    .then((user) => {
-      req.session.user = user.dataValues; // aca guardo el id
-      res.locals.user = user.dataValues; //quiero q guardes en locals y en session lo q me venga del navegador
+    db.Usuarios.findByPK(idCookie)
+    .then((usuario) => {
+      req.session.usuario = usuario.dataValues; // aca guardo el id
+      res.locals.usuario = usuario.dataValues; //quiero q guardes en locals y en session lo q me venga del navegador
       return next();
 
     }).catch((err) => {

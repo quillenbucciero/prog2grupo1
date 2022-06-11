@@ -8,7 +8,7 @@
 		
 				<div class="col-5 col-md-2">
 					<a href="/" class="main-header_home-link">
-						<img src="/images/users/ <%= user.fotoDePerfil %>" alt="Foto de perfil de <%= user.nombre %> ">
+						<img src="/images/users/ <%= locals.usuario.foto_de_perfil %>" alt="Foto de perfil de <%= locals.usuario.nombre %> ">
 					</a>
 				</div>
 			
@@ -42,12 +42,12 @@
 					
 					<ul class="right-navbar">
 						<!--link a  mi perfil-->
-						<li><a href="/profile"> 
-							<%= locals.user.name %> <i class="fas fa-user"></i>
+						<li><a href="/profile">   
+							<%= locals.usuario.nombre %> <i class="fas fa-user">  </i>
 							</a>
 						</li>
 					<li><a href="/profile">
-							Bienvenido <%= locals.user.name %> <i class="fas fa-user"></i>
+							  Bienvenido <%= locals.usuario.nombre %>  </i>
 						</a>
 					</li>
 					<li>

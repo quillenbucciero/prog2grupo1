@@ -5,7 +5,7 @@
 <body>
 		
 	<!--Header-->
-	<% if (locals.user != undefined) { %>
+	<% if (locals.usuario != undefined) { %>
 		<%- include('./partials/headerLogueado') %>
 	<% } else {%>
 		<%- include('./partials/headerDeslogueado') %>
@@ -21,7 +21,7 @@
 
 			<h2 class="col-12"> <i> 
 				<% if(locals.erroresRegister){ %>
-					<p class="mensajeError" style="color: red;"> <%= locals.erroresRegister.message %>
+					<p class="mensajeError" style="color: red;"> <i class="fa-solid fa-circle-xmark"></i> <%= locals.erroresRegister.message %>
 					</p>
 				<% } %>
 

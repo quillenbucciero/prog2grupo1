@@ -6,13 +6,10 @@ const productController = {
         let id = req.params.id;
 
         Productos.findByPk(id, {
-            include: [
-              {association : 'comentarios'},
-              {association : 'usuarios', 
-                include: [
-                  {association: 'comentarios'}
-              ]
-            }]
+            include: {
+              all : true,
+              nested : true
+            }
       
             /* {
               all: true,        //Nos trae todas las associations

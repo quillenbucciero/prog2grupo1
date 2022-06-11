@@ -6,15 +6,16 @@ const bcrypt = require('bcryptjs');
 
 const indexController = {
     index: function (req,res) {
-
+        
         db.Productos.findAll( {
             limit: 8,
             order: [
                 ['created_at', 'DESC'] 
             ],
-            include: [
-                {association: "usuarios"}
-            ]
+            include: {
+                all : true,
+                nested : true
+            }
         })
         .then(function (result) {
 
@@ -78,41 +79,57 @@ const indexController = {
         }       
     },
     login: function (req,res) {
-        return res.render('login')
+        return res.render("login")
     },
     procesarLogin : (req, res) => {
         let info = req.body;
         let filtro = {where : [ { email : info.email}]};
+        let erroresLogin = {};
 
-        user.findOne(filtro)
+        if (info.mail == "") {
+            erroresLogin.message = "El mail está vacío";
+            res.locals.erroresLogin = erroresLogin;
+            return res.render('login');
+            
+        } else if (info.password == "") {
+            erroresLogin.message = "La contraseña está vacía";
+            res.locals.erroresLogin = erroresLogin;
+            return res.render('login');            
+        }else {
+            Usuarios.findOne(filtro)
         .then((result) => {
             
             if (result != null) {
 
-                let passEncriptada = bcrypt.compareSync(info.password , result.password)
+                let passEncriptada = bcrypt.compareSync(info.password , result.contrasena)
                 if (passEncriptada) {
 
-                    req.session.user = result.dataValues;
+                    req.session.usuario = result.dataValues; // creo la propiedad usuarios
 
                     if (req.body.remember != undefined) {
                         res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
                     }
-
-                    return res.redirect("/profile")
+                    return res.redirect("/")
 
                 } else {
-                    return res.send("Existe el mail " +  result.email + " pero la clave es incorrecta");
+                    erroresLogin.message = "Existe el mail " +  result.email + " pero la clave es incorrecta";
+                    res.locals.erroresLogin = erroresLogin;
+                    return res.render('login');                   
                 }
                
             } else {
-                return res.send("No existe este mail " +  info.email);
+                erroresLogin.message = "No existe este mail " +  info.email ;
+                res.locals.erroresLogin = erroresLogin;
+                return res.send('login');
             }
 
         }).catch((err) => {
-            
+            console.log(err);
         });
-
+        }
     },
+
+        
     logout: (req,res) => {
 
         req.session.destroy();
@@ -121,6 +138,8 @@ const indexController = {
         
     } 
 };
+
+
 
 module.exports = indexController;
 
