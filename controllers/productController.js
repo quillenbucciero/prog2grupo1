@@ -11,20 +11,9 @@ const productController = {
           ]
         })
         .then(result =>{
-
-          let fecha = result.created_at;
-          let fechaFormateada = new Date(fecha).toISOString().slice(0,10);
-
-          let producto = {
-            nombre: result.dataValues.nombre,
-            imagen : result.dataValues.imagen,
-            created_at : fechaFormateada,
-            descripcion : result.dataValues.descripcion,
-            usuarios: result.dataValues.usuarios,
-          }
           
           return res.render("product", {
-              producto : producto,
+              producto : result,
 
           })
         }).catch((err) => {
@@ -47,9 +36,9 @@ const productController = {
 
       Productos.create(productoNuevo)
       .then((result) => {
-        return res.redirect("/product")
+        return res.redirect("/")
       }).catch((err) => {
-        console.log(err);
+        console.log("Este es el error" +err);
     });
     },
     edit: function(req, res) {
@@ -60,10 +49,11 @@ const productController = {
       .then((result) => {
 
         let product = {
-          id: result.id,
-          nombre: result.nombre,
-          descripcion: result.descripcion,
-          imagen: result.imagen,      
+          id: result.dataValues.id,
+          nombre: result.dataValues.nombre,
+          descripcion: result.dataValues.descripcion,
+          imagen: result.dataValues.imagen,      
+          updated_at: new Date()
 
         }
 
@@ -76,15 +66,15 @@ const productController = {
       procesarEdit: (req,res)=> {
         let idEditar = req.params.id;
 
-        let product = {
-          nombre: req.body.nombre,
-          descripcion: req.body.descripcion,
-          /*imagen: imagen,*/
-      
-        }
-        let filtro = { where : { id: idEditar}}
-
-        producto.procesarEdit(product, filtro)
+        Productos.update(
+          {
+              nombre: req.body.nombre,
+              descripcion: req.body.descripcion,
+              updated_at: new Date()         
+          }, 
+          { where : 
+            { id: idEditar}
+          })
         .then ((result) => {
           return res.redirect("/")
         }).catch((err) => {
