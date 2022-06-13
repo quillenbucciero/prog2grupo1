@@ -144,7 +144,7 @@ const indexController = {
     logout: (req,res) => {
 
         req.session.destroy();
-        res.clearCookie('idCookie');      
+        res.clearCookie('id');      
         return res.redirect("/")
         
     } 
