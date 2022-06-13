@@ -35,7 +35,7 @@
 							<article class="product-box_data">
 								<h2> <%= data[i].nombre %> </h2>
 								<p> <%= data[i].descripcion %> </p> 
-								<p> Cargado por el usuario   </p> 
+								<p> Cargado por el usuario  <a href="/"><%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></a> </p> 
 								 <!-- CAMBIAR LINK DESPUES!! DE USUARIOS-->
 								
 							</article>
@@ -64,7 +64,7 @@
 								<article class="product-box_data">
 									<h2> <%= data[i].nombre %> </h2>
 									<p> <%= data[i].descripcion %> </p> 
-									<p> Cargado por el usuario   </p> 
+									<p> Cargado por el usuario  <a href="/"><%= data[i].usuarios.nombre %> <%= data[i].usuarios.apellido %></a> </p> 
 									 <!-- CAMBIAR LINK DESPUES!! DE USUARIOS-->
 								</article>
 							</a>
