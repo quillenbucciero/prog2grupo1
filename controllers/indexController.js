@@ -131,7 +131,7 @@ const indexController = {
             } else {
                 erroresLogin.message = "No existe este mail " +  info.email ;
                 res.locals.erroresLogin = erroresLogin;
-                return res.send('login');
+                return res.render('login');
             }
 
         }).catch((err) => {

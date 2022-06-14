@@ -19,10 +19,9 @@
 			</div>
 		
 			<h2 class="col-12"> <i> 
-				<form action="/product/edit/id" method="post" enctype="multipart/form-data" class="form-register-container">	
+				<form action="/product/edit/id/<%= producto.id %>" method="post" enctype="multipart/form-data" class="form-register-container">	
 					<input type="text" name="nombre" class="form-register" placeholder="Nombre de producto" value="<%= producto.nombre %>"> 
 					 <input type="text" name="descripcion" class="form-register" placeholder="Descripción de producto" value="<%= producto.descripcion %>"> 
-					<!--<textarea name="descripcion"  cols="30" rows="10" class="form-register" placeholder="Descripción de producto" value=" no aparece el value en al vista "></textarea> -->
 					<input type="submit" name="" class="form-register-submit">
 				</form>
 			</h2>

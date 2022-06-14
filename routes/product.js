@@ -26,7 +26,7 @@ router.post('/add', upload.single('imagen'), productController.procesarAgregar);
 
 router.get('/edit/id/:id', productController.edit);
 
-router.post('/edit/id/:id', upload.single('imagen'), productController.procesarEdit);
+router.post('/edit/id/:id', productController.procesarEdit);
 
 router.get('/id/:id/comentario', productController.comentario);
 

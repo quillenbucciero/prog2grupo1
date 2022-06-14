@@ -3,16 +3,16 @@ const Productos = db.Productos; //Alias de la db
 const op = db.Sequelize.Op;
 
 const searchController = {
-    index: function(req,res){  ``
+    index: function(req,res){  
         let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
                                 where:[
-                                    {nombre:{ [op.like]: `%${palabraBuscada}%`}}
+                                    { nombre:{ [op.like]: `%${palabraBuscada}%`}}
                                 ] 
                             });
         let promesaDescripcion = Productos.findAll({
                                     where:[
-                                        {descripcion:{ [op.like]: `%${palabraBuscada}%`}}
+                                        { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
                                     ] 
                                 });
         Promise.all([promesaNombre, promesaDescripcion])
@@ -30,10 +30,6 @@ const searchController = {
         })
         .catch(err => console.log(err));
     }
-
   /*EN CASO DE NO ENCONTRAR RTDOS MOSTRAR MENSAJE*/
-
-
 };
-
 module.exports = searchController;

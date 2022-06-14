@@ -19,13 +19,14 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form method="get" action="/profile" class="form-register-container">
-					<input type="email" name="" class="form-register" placeholder="Ingrese su email">
-					<input type="text" name="" class="form-register" placeholder="Nombre de usuario">
+				<form method="post" action="/profile-edit" class="form-register-container" enctype="multipart/form-data">
+					<input type="email" name="email" class="form-register" placeholder="Ingrese su email">
+					<input type="text" name="nombre" class="form-register" placeholder="Nombre">
+					<input type="text" name="apellido" class="form-register" placeholder="Apellido">
 					<input type="text" class="form-register" name="contraseña" placeholder="Contraseña">
-					<input type="date" class="form-register" name="fecha">
-					<input type="number" class="form-register" name="DNI" placeholder="Número de documento">
-					<input type="file" class="form-register" name="foto">
+					<input type="date" class="form-register" name="fecha_de_nacimiento">
+					<input type="number" class="form-register" name="documento" placeholder="Número de documento">
+					<input type="file" class="form-register" name="foto_de_perfil">
 					<input type="submit"  name="" class="form-register-submit">
 				</form>
 			</h2>

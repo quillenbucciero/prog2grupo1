@@ -7,9 +7,10 @@ const productController = {
         let id = req.params.id;
 
         Productos.findByPk(id, {
-          include: [
-            {association: "usuarios"}
-          ]
+          include: {
+            all : true,
+            nested : true
+        }
         })
         .then((result) =>{
           
@@ -52,8 +53,7 @@ const productController = {
         let product = {
           id: result.dataValues.id,
           nombre: result.dataValues.nombre,
-          descripcion: result.dataValues.descripcion,
-          imagen: result.dataValues.imagen,      
+          descripcion: result.dataValues.descripcion, 
           updated_at: new Date()
 
         }
@@ -62,9 +62,11 @@ const productController = {
           producto : product
         });
      
-      })
+      }).catch((err) => {
+        console.log("Este es el error" +err);
+      });
       },
-      procesarEdit: (req,res)=> {
+    procesarEdit: (req,res)=> {
         let idEditar = req.params.id;
 
         Productos.update(
