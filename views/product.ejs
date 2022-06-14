@@ -5,21 +5,21 @@
 <body>
 	
 		<!--Header-->
-		<% if (locals.user != undefined) { %>
-			<%- include('./partials/headerLogueado') %>
-		<% } else {%>
-			<%- include('./partials/headerDeslogueado') %>
-		<% } %> 
-		<!--Header-->
+	<% if (locals.usuario != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else {%>
+		<%- include('./partials/headerDeslogueado') %>
+	<% } %> 
+	<!--Header-->
 	
 	<!-- product detail -->
 		<div class="container products-wrapper">
 			<div class="d-flex align-items-center">
 				<h2 class="products-title"><%= producto.nombre %></h2> 
 				<p class="product-detail-description">
-					<% if (locals.user != undefined && locals.user.id == producto.usuarios.id) { %>
-						<a href="/product/edit">Editar</a>
-					<% } %>
+				<% if (locals.usuario != undefined) { %>
+					<a href="/product/edit/id/<%= producto.id %>">Editar</a>
+				<% } %>
 				</p>
 			</div>
 
@@ -27,7 +27,7 @@
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
 						<img src= <%= producto.imagen %>  alt="<%= producto.nombre %>" class="product-detail-img"> <!-- CAMBIAR LINK DESPUES!!-->
-						<p class="product-detail-description"> <%= producto.descripcion %>. Cargado el día: <%= producto.created_at %> por el usuario <a href="/profile"><%= producto.usuarios.nombre %> <%= producto.usuarios.apellido %></a></p>
+						<p class="product-detail-description"> <%= producto.descripcion %>. </p>
 					</article>
 	
 				</div>

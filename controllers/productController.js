@@ -6,29 +6,19 @@ const productController = {
         let id = req.params.id;
 
         Productos.findByPk(id, {
-          include: [
-            {association: "usuarios"}
-        ]
+          include: {
+            all : true,
+            nested : true
+        }
         })
         .then(result =>{
-
-          let fecha = result.created_at;
-          let fechaFormateada = new Date(fecha).toISOString().slice(0,10);
-
-          let producto = {
-            nombre: result.dataValues.nombre,
-            imagen : result.dataValues.imagen,
-            created_at : fechaFormateada,
-            descripcion : result.dataValues.descripcion,
-            usuarios: result.dataValues.usuarios,
-          }
           
           return res.render("product", {
-              producto : producto,
+              producto : result,
 
           })
         }).catch((err) => {
-          "Este es el error" +err;
+            console.log(err);
         });
     },
     add: (req, res) => {
@@ -36,26 +26,64 @@ const productController = {
     },
     procesarAgregar: (req, res) => {
 
-      let imagenProducto = req.filename.imagen;
-
+      let imagen = req.file.filename;
       let productoNuevo = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         created_at: new Date(),
-        imagen: imagenProducto,
+        imagen: imagen,
         updated_at: new Date()
       }
 
       Productos.create(productoNuevo)
       .then((result) => {
-        return res.redirect("/product/add")
-    }).catch((err) => {
-        "Este es el error" +err;
+        return res.redirect("/")
+      }).catch((err) => {
+        console.log("Este es el error" +err);
     });
     },
     edit: function(req, res) {
-      return res.render('product-edit');
-   }
+
+      let id = req.params.id 
+
+      Productos.findByPk(id)
+      .then((result) => {
+
+        let product = {
+          id: result.dataValues.id,
+          nombre: result.dataValues.nombre,
+          descripcion: result.dataValues.descripcion, 
+          updated_at: new Date()
+
+        }
+
+        return res.render('product-edit', {
+          producto : product
+        });
+     
+      }).catch((err) => {
+        console.log("Este es el error" +err);
+      });
+      },
+    procesarEdit: (req,res)=> {
+        let idEditar = req.params.id;
+
+        Productos.update(
+          {
+              nombre: req.body.nombre,
+              descripcion: req.body.descripcion,
+              updated_at: new Date()         
+          }, 
+          { where : 
+            { id: idEditar}
+          })
+        .then ((result) => {
+          return res.redirect("/")
+        }).catch((err) => {
+          return res.send(err)
+        })   
+    }
+
 }
 
 module.exports = productController;

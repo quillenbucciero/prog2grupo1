@@ -3,18 +3,18 @@
 
 <body>
 		<!--Header-->
-		<% if (locals.user != undefined) { %>
-			<%- include('./partials/headerLogueado') %>
-		<% } else {%>
-			<%- include('./partials/headerDeslogueado') %>
-		<% } %> 
-		<!--Header-->
+	<% if (locals.usuario != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else {%>
+		<%- include('./partials/headerDeslogueado') %>
+	<% } %> 
+	<!--Header-->
 
 	<!-- Resultados -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
+					<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 		</div>
@@ -26,13 +26,13 @@
 			<section class="product-box">
 					<a href="/product/id/<%= resultados[i].id%>">
 						<figure class="product-box_image">
-							<img src="<%= resultados[i].imagen %> " alt="<% resultados[i].nombre%> ">
+							<img src="<%= resultados[i].imagen %> " alt="<%= resultados[i].nombre %> ">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= resultados[i].nombre %> </h2>
-							<p>Descripcion: <%= resultados[i].descripcion %> </p> 
-							<p>Comentarios: 12</p>
-							<p>Subido por:</p>
+							<p><%= resultados[i].descripcion %></p>
+							<p> Comentarios: </p>
+							<p> Subido por: </p>
 						</article>
 					</a>
 			</section>
