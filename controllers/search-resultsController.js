@@ -1,6 +1,7 @@
 const db = require("../database/models"); //Requiero db 
 const Productos = db.Productos; //Alias de la db
 const op = db.Sequelize.Op;
+const bcrypt = require('bcryptjs');
 
 const searchController = {
     index: function(req,res){  

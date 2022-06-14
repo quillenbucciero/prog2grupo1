@@ -1,5 +1,6 @@
 let db = require('../database/models');
 let Productos = db.Productos;
+const bcrypt = require('bcryptjs');
 
 const productController = {
     detalle : (req, res) => {
