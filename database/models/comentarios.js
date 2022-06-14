@@ -38,12 +38,13 @@ module.exports = function(sequelize, dataTypes){
     };
 
     //Relación con usuarios
-    Comentarios.associate = function (models) { 
+   Comentarios.associate = function (models) { 
         Comentarios.belongsTo(models.Usuarios, {
             as: "usuarios",
             foreignKey: "usuario_id"
         })
-    };
+   };
 
     return Comentarios;
 }
+

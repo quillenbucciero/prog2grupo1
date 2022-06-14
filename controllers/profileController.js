@@ -1,6 +1,7 @@
 const db = require("../database/models"); //Requiero db 
 const Usuarios = db.Usuarios; //Alias de la db
 const bcrypt = require('bcryptjs');
+const productos = db.Productos
 
 const profileController = {
     login: function (req,res) {
@@ -105,13 +106,15 @@ const profileController = {
     index: (req, res) => {
         let id = req.params.id;
 
-        Usuarios.findByPk(id, {
-          include: {
-            all : true,
-            nested : true
-        }
+        Usuarios.findByPk(id, { 
+          include: [
+              {association: 'productoUsuario'},
+              {association: 'comentario'}
+
+          ]
         })
         .then(result =>{
+          console.log(result.dataValues.productoUsuario);
           
           return res.render("profile", {
               usuario : result,
@@ -123,6 +126,8 @@ const profileController = {
     },
     edit: (req,res) => {
         let idEditar = req.params.id;
+
+
 
         Usuarios.findByPk(idEditar)
         .then((result) => { /*muestro sus datos xa poder editar*/
@@ -137,6 +142,8 @@ const profileController = {
                 foto_de_perfil: result.dataValues.foto_de_perfil, 
                 updated_at: new Date(),
             }
+
+            
 
             return res.render('profile-edit', {
                 usuario: usuario
