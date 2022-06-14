@@ -105,7 +105,7 @@ const productController = {
       }
     /*  borrarProducto: (req.res) => {
 
-      let filtro = {where : [ {user_id : req.sesion.id}]} // CAMBIAR ESTO
+      let filtro = {where : [ {user_id : req.sesion.id}]} // REVISAR ESTO
       if (condition) {
         Productos.destroy({
           where: {
