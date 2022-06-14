@@ -11,9 +11,6 @@ module.exports = function(sequelize, dataTypes){
         texto: {
             type: dataTypes.STRING
         },
-        imagen:{
-            type: dataTypes.STRING
-        },
         producto_id: {
             type: dataTypes.INTEGER
         },
