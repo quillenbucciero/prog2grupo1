@@ -1,4 +1,5 @@
 let db = require('../database/models');
+const usuarios = require('../database/models/usuarios');
 let Productos = db.Productos;
 
 const productController = {
@@ -10,7 +11,7 @@ const productController = {
             {association: "usuarios"}
           ]
         })
-        .then(result =>{
+        .then((result) =>{
           
           return res.render("product", {
               producto : result,
@@ -80,11 +81,43 @@ const productController = {
         }).catch((err) => {
           return res.send(err)
         })
+      },
+      comentario: function (req,res) {
+        return res.render('register')
+      },
+      procesarComentario: (req, res) => {
 
+        let ComentarioNuevo = {
+          texto: req.body.comentario,
+          imagen: req.body.descripcion,
+         // producto: req.body.id
+         // usuarios: 
+        }
 
-
-   
+        Comentarios.create(ComentarioNuevo)
+        .then((result) => {
+          return res.redirect("/product/id")
+        }).catch((err) => {
+          console.log("Este es el error" +err);
+      });
       }
+    /*  borrarProducto: (req.res) => {
+
+      let filtro = {where : [ {user_id : req.sesion.id}]} // CAMBIAR ESTO
+      if (condition) {
+        Productos.destroy({
+          where: {
+            id : producto.id
+          }
+        })
+        
+      } else {
+        return res.redirect("/id/:id")
+      }
+      Al clickear dicho botón debe borrarse el producto pero previamente se tiene que verificar que el posteo que está siendo borrado pertenece al usuario logueado. En caso de error debe redirigir al usuario a la página de detalle de ese producto
+      } */
+      
+
 
 }
 
