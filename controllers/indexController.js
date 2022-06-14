@@ -1,6 +1,7 @@
 const db = require("../database/models"); //Requiero db 
 const Usuarios = db.Usuarios; //Alias de la db
 
+
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
 

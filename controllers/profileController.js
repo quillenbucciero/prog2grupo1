@@ -1,5 +1,6 @@
 const db = require("../database/models"); //Requiero db 
 const Usuarios = db.Usuarios; //Alias de la db
+const bcrypt = require('bcryptjs');
 
 const profileController = {
     login: function (req,res) {
