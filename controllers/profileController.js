@@ -142,10 +142,10 @@ const profileController = {
             });    
         })
     },
-    procesaredit: (req,res) => {
+    procesarEdit: (req,res) => {
         let idEditar = req.params.id;
 
-        let foto_de_perfil = req.file.filename;
+        /*let foto_de_perfil = req.file.filename;*/
 
         Usuarios.update(
           {
@@ -155,7 +155,7 @@ const profileController = {
             usuario: req.body.usuario,
             fecha_de_nacimiento: req.body.fecha_de_nacimiento,
             documento: req.body.documento,
-            foto_de_perfil: foto_de_perfil,
+            /*foto_de_perfil: foto_de_perfil,*/
             updated_at: new Date()     
           }, 
           { where : 
