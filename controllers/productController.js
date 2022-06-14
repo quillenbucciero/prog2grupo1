@@ -103,8 +103,8 @@ const productController = {
         }).catch((err) => {
           console.log("Este es el error" +err);
       });
-      }
-    /*  borrarProducto: (req.res) => {
+      },
+      borrarProducto: (req,res) => {
 
       let filtro = {where : [ {user_id : req.sesion.id}]} // CAMBIAR ESTO
       if (condition) {
@@ -117,11 +117,7 @@ const productController = {
       } else {
         return res.redirect("/id/:id")
       }
-      Al clickear dicho botón debe borrarse el producto pero previamente se tiene que verificar que el posteo que está siendo borrado pertenece al usuario logueado. En caso de error debe redirigir al usuario a la página de detalle de ese producto
-      } */
-      
-
-
+      }
 }
 
 module.exports = productController;

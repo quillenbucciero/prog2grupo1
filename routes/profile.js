@@ -31,6 +31,6 @@ router.get('/id/:id', profileController.index);
 
 router.get('/edit/id/:id', profileController.edit);
 
-router.post('/edit/id/:id', profileController.procesarEdit); /* uso multer */
+router.post('/edit/id/:id', profileController.procesarEdit); 
 
 module.exports = router;
