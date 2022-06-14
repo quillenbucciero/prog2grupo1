@@ -30,20 +30,20 @@ module.exports = function(sequelize, dataTypes){
     const Comentarios = sequelize.define(alias, cols, config);
 
     //Relación con productos
-    /*Comentarios.associate = function (models) { 
+    Comentarios.associate = function (models) { 
         Comentarios.belongsTo(models.Productos, {
             as: "productos",
             foreignKey: "producto_id"
         })
-    };*/
+    };
 
     //Relación con usuarios
-    /*Comentarios.associate = function (models) { 
+    Comentarios.associate = function (models) { 
         Comentarios.belongsTo(models.Usuarios, {
             as: "usuarios",
             foreignKey: "usuario_id"
         })
-    };*/
+    };
 
     return Comentarios;
 }

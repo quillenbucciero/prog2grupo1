@@ -52,12 +52,12 @@ module.exports = function(sequelize, dataTypes){
 
 
     //Comentarios
-    /*Productos.associate = function (models) { 
+    Productos.associate = function (models) { 
         Productos.hasMany(models.Comentarios, {
             as: "comentarios",
             foreignKey: "producto_id"
         })
-    }*/
+    };
     
     return Productos;
     

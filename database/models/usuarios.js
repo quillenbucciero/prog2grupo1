@@ -57,12 +57,12 @@ module.exports = function (sequelize, dataTypes){
     }; 
 
     //Relación con comentarios
-    /*Usuarios.associate = function (models) { 
+    Usuarios.associate = function (models) { 
         Usuarios.hasMany(models.Comentarios , {
             as: "comentarios",
             foreignKey: "usuario_id"
         })
-    }; */
+    }; 
    
 
     return Usuarios;
