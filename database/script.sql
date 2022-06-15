@@ -29,4 +29,10 @@ VALUES ('yogur-coco.jpg', 'Yogur a Base de Coco VEGANO sabor Vainilla Apto APLV 
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
 VALUES ('Alfajor-chocolate.png', 'ALFAJOR DE CHOCOLATE SIN TACC', 'Alfajor de chocolate relleno de untable endulzado de almendras sabor dulce de leche, cubierto con baño de repostería semiamargo, libre de gluten.', '2022-06-13', '2022-02-22', '2');
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
-VALUES ('Pizza-provolone.png', 'Pizza Provolone', 'Pizza con salsa de tomate y alimento vegetal a base de almendras y castañas, sabor provolone.', '2022-06-13', '2022-02-22', '3');
+VALUES ('Pizza-provolone.png', 'Pizza Provolone', 'Pizza con salsa de tomate y alimento vegetal a base de almendras y castañas, sabor provolone.', '2022-06-13', '2022-02-22', '3')
+INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
+VALUES ('Chori-Vegano.jpeg', 'Chorizo Vegano x 270gr (3u) - VEGGIELAND', 'ALIMENTO A BASE DE SOJA CON SABOR A CARNE AHUMADA, PRECOCIDO, CONGELADO.', '2022-06-13', '2022-02-22', '3')
+INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
+VALUES ('CHICKENVIL-PARTY.png', 'CHICKENVIL PARTY', 'Medallón a base de arveja, sabor pollo, libre de gluten.', '2022-06-13', '2022-02-22', '4');
+INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
+VALUES ('Panceta-Vegana.jpg', 'Panceta Vegana Ahumada Feteada x 190gr - VEGGIELAND', 'ALIMENTO A BASE DE MANDIOCA Y SOJA CON SABOR A PANCETA AHUMADA, PRECOCIDO, CONGELADO.', '2022-06-13', '2022-02-22', '4');
