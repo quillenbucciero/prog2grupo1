@@ -89,7 +89,7 @@ const productController = {
       comentarios: (req,res) => {
         
           Comentarios.findAll( {
-            limit: 8,
+            limit: 6,
             order: [
                 ['created_at', 'DESC'] 
             ],

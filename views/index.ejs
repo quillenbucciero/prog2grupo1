@@ -30,12 +30,12 @@
 					<section class="product-box">
 						<a href= "/product/id/<%= data[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %>">
+								<img src="/images/products/<%= data[i].imagen %>" alt="<%= data[i].nombre %>">
 							</figure>
 							<article class="product-box_data">
 								<h2> <%= data[i].nombre %> </h2>
 								<p> <%= data[i].descripcion %> </p> 
-								<p> Cargado por el usuario </p> 
+								<p> Cargado por el usuario  </p> 
 								
 							</article>
 						</a>
@@ -58,14 +58,12 @@
 						<section class="product-box">
 							<a href= "/product/id/<%= data[i].id %>">
 								<figure class="product-box_image">
-									<img src="<%= data[i].imagen %>" alt="<%= data[i].nombre %>">
+									<img src="/images/products/<%= data[i].imagen %>" alt="<%= data[i].nombre %>">
 								</figure>
 								<article class="product-box_data">
 									<h2> <%= data[i].nombre %> </h2>
 									<p> <%= data[i].descripcion %> </p> 
-									<p> Cargado por el usuario  </p> 
-									
-									
+									<p> Cargado por el usuario </p> 
 								</article>
 							</a>
 						</section>

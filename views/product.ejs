@@ -19,8 +19,8 @@
 				<p class="product-detail-description">
 				<% if (locals.usuario != undefined && locals.usuario == producto.usuario_id) { %>
 					<a href="/product/edit/id/<%= producto.id %>">Editar</a>
-					<a href="/borrar<%= producto.id %>">Borrar Producto</a>
-
+					
+					<a href="/borrar/<%= producto.id %>">Borrar Producto</a>
 				<% } %>
 				</p>
 			</div>
@@ -28,9 +28,8 @@
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src= <%= producto.imagen %>  alt="<%= producto.nombre %>" class="product-detail-img"> <!-- CAMBIAR LINK DESPUES!!-->
-						<p class="product-detail-description"> <%= producto.descripcion %>. </p>
-						<p class="product-detail-description"> <%= producto.descripcion %>. Cargado el día: <%= producto.created_at %> por el usuario <a href="/profile/id/<%= producto.usuario_id %> "> <%=  producto.usuarios.nombre  %> <%=  producto.usuarios.apellido  %>  </a></p>
+						<img src= "/images/products/<%= producto.imagen %>"  alt="<%= producto.nombre %>" class="product-detail-img"> <!-- CAMBIAR LINK DESPUES!!-->
+						<p class="product-detail-description"> <%= producto.descripcion %>. Cargado el día: <%= producto.created_at %> por el usuario  </a></p>
 					</article>
 					<!--Comentarios-->
 				<div class="col-12 col-lg-4">
@@ -54,14 +53,10 @@
 						</form>
 					<% } else {%>
 						<form class="form" action="/login" method="get">
-					<!--	<input class="form-input" type="text" value="" placeholder="Agregar comentario"> -->
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
 					<% } %> 
 					
-					<hr>
-				</div>
-			<!--Comentarios-->
 	
 	
 				</div>
