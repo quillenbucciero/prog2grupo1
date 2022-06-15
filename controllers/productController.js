@@ -1,6 +1,7 @@
 let db = require('../database/models');
 const usuarios = require('../database/models/usuarios');
 let Productos = db.Productos;
+let Comentarios = db.Comentarios;
 const bcrypt = require('bcryptjs');
 
 const productController = {
@@ -27,14 +28,15 @@ const productController = {
         return res.render('product-add')
     },
     procesarAgregar: (req, res) => {
-
+      let usuarioId = req.sesion.id;
       let imagen = req.file.filename;
       let productoNuevo = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         created_at: new Date(),
         imagen: imagen,
-        updated_at: new Date()
+        updated_at: new Date(),
+        usuario_id: usuarioId
       }
 
       Productos.create(productoNuevo)
@@ -58,7 +60,6 @@ const productController = {
           updated_at: new Date()
 
         }
-
         return res.render('product-edit', {
           producto : product
         });
@@ -70,8 +71,8 @@ const productController = {
     procesarEdit: (req,res)=> {
         let idEditar = req.params.id;
 
-        Productos.update(
-          {
+        Productos.update({
+          
               nombre: req.body.nombre,
               descripcion: req.body.descripcion,
               updated_at: new Date()         
@@ -85,34 +86,61 @@ const productController = {
           return res.send(err)
         })
       },
-      comentario: function (req,res) {
+      comentarios: (req,res) => {
+        
+          Comentarios.findAll( {
+            limit: 8,
+            order: [
+                ['created_at', 'DESC'] 
+            ],
+            include: {
+                all : true,
+                nested : true
+            }
+        })
+        .then(function (result) {
+
+            console.log(result);
+
+            return res.render('product', {
+                data: result,
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
+
+
+      },
+      comentarioNuevo: function (req,res) {
         return res.render('register')
       },
-      procesarComentario: (req, res) => {
+      procesarComentarioNuevo: (req, res) => {
+
+        let idProducto = req.params.id;
 
         let ComentarioNuevo = {
-          texto: req.body.comentario,
-          imagen: req.body.descripcion,
-         // producto: req.body.id
-         // usuarios: 
+          texto: req.body.texto,
+          producto_id: idProducto,
+          usuario_id: req.sesion.id
+
         }
 
         Comentarios.create(ComentarioNuevo)
         .then((result) => {
           return res.redirect("/product/id")
         }).catch((err) => {
-          console.log("Este es el error" +err);
+          console.log("Este es el error" + err);
       });
       },
       borrarProducto: (req,res) => {
-
-      let filtro = {where : [ {user_id : req.sesion.id}]} // REVISAR ESTO
-      if (condition) {
-        Productos.destroy({
-          where: {
-            id : producto.id
-          }
-        })
+        let idProducto = req.params.id;
+        let filtro = {where : [ {user_id : req.sesion.id}]} // REVISAR ESTO
+        if (condition) {
+          Productos.destroy({
+            where: {
+              id : idProducto
+            }
+          })
         
       } else {
         return res.redirect("/id/:id")

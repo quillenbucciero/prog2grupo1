@@ -22,15 +22,15 @@ router.get('/id/:id', productController.detalle);
 
 router.get('/add',productController.add);
 
-router.post('/add',  productController.procesarAgregar); 
+router.post('/add', upload.single('imagen'), productController.procesarAgregar); 
 
 router.get('/edit/id/:id', productController.edit);
 
 router.post('/edit/id/:id', productController.procesarEdit);
 
-router.get('/id/:id/comentario', productController.comentario);
+//router.get('/id/:id/comentario', productController.comentarioNuevo);
 
-router.post('/id/:id/comentario', productController.procesarComentario);
+//router.post('/id/:id/comentario', productController.procesarComentarioNuevo);
 
 router.get('/borrar', productController.borrarProducto);
 
