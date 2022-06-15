@@ -16,11 +16,15 @@ module.exports = function(sequelize, dataTypes){
         },
         usuario_id: {
             type: dataTypes.INTEGER
+        },
+        created_at: {
+            type: dataTypes.DATE,
+            allowNull:true,
         }
     }
     let config = {
         tableName: 'comentarios', 
-        timestamps: false, 
+        timestamps: true, 
         underscored: true, 
     }
 
