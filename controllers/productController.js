@@ -34,7 +34,8 @@ const productController = {
         descripcion: req.body.descripcion,
         created_at: new Date(),
         imagen: imagen,
-        updated_at: new Date()
+        updated_at: new Date(),
+        usuario_id: req.cookies.id
       }
 
       Productos.create(productoNuevo)
