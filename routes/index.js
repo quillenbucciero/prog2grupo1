@@ -24,11 +24,11 @@ router.get('/register', indexController.register);
 
 router.post('/register', upload.single('foto_de_perfil'), indexController.procesarRegister);
 
-router.get('/login', indexController.login);
+// router.get('/login', indexController.login);
 
-router.post('/login', indexController.procesarLogin); 
+// router.post('/login', indexController.procesarLogin); 
 
-router.post('/logout', indexController.logout);
+// router.post('/logout', indexController.logout);
 
 module.exports = router;
 

@@ -15,7 +15,7 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src=" <%= usuario.foto_de_perfil %> " alt="<%= usuario.nombre %> <%= usuario.apellido %> " class="foto-perfil">
+				<img src="/images/users/<%= usuario.foto_de_perfil %> " alt="<%= usuario.nombre %> <%= usuario.apellido %> " class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
@@ -55,7 +55,7 @@
 	
 					<a href="/product/id/<%= usuario.productoUsuario[i].dataValues.id %>"> 
 						<figure class="product-box_image">
-							<img src="<%= usuario.productoUsuario[i].dataValues.imagen %> " alt="<% usuario.productoUsuario[i].dataValues.nombre%> ">
+							<img src="/images/products/<%= usuario.productoUsuario[i].dataValues.imagen %> " alt="<% usuario.productoUsuario[i].dataValues.nombre%> ">
 						</figure>
 						<article class="product-box_data">
 							<h2><%= usuario.productoUsuario[i].dataValues.nombre %> </h2>

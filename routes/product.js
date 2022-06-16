@@ -28,9 +28,9 @@ router.get('/edit/id/:id', productController.edit);
 
 router.post('/edit/id/:id', productController.procesarEdit);
 
-router.get('/id/:id/comentario', productController.comentario);
+router.get('/id/:id/comentario', productController.comentarioNuevo);
 
-router.post('/id/:id/comentario', productController.procesarComentario);
+router.post('/id/:id/comentario', productController.procesarComentarioNuevo);
 
 router.get('/borrar', productController.borrarProducto);
 
