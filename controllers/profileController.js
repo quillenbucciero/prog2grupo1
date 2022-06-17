@@ -4,53 +4,13 @@ const bcrypt = require('bcryptjs');
 const productos = db.Productos
 
 const profileController = {
-    login: function (req,res) {
-        return res.render('login')
-    },
-    procesarLogin : (req, res) => {
-        let info = req.body;
-        let filtro = {where : [ { email : info.email}]};
-
-        user.findOne(filtro)
-        .then((result) => {
-            
-            if (result != null) {
-
-                let passEncriptada = bcrypt.compareSync(info.password , result.password)
-                if (passEncriptada) {
-
-                    req.session.user = result.dataValues;
-
-                    if (req.body.remember != undefined) {
-                        res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
-                    }
-
-                    return res.redirect("/profile")
-
-                } else {
-                    return res.send("Existe el mail " +  result.email + " pero la clave es incorrecta");
-                }
-               
-            } else {
-                return res.send("No existe este mail " +  info.email);
-            }
-
-        }).catch((err) => {
-            console.log(err);
-        });
-    },
-    logout: (req,res) => {
-
-        req.session.destroy();
-        res.clearCookie('userId');      
-        return res.redirect("/")
-        
-    },
-    register:(req,res) => {
+    register: function (req,res) {
         return res.render('register')
     },
     procesarRegister : (req, res) => {
+
         let erroresRegister = {};
+
         if (req.body.nombre == "") {
             erroresRegister.message = "El nombre está vacío";
             res.locals.erroresRegister = erroresRegister;
@@ -90,28 +50,89 @@ const profileController = {
                 if (!result) {
                     Usuarios.create(usuarioNuevo)
                     .then((result) => {
-                        return res.redirect("/login")
+                        return res.redirect("/profile/login")
                     }).catch((err) => {
-                        console.log("Este es el error" +err);
+                        console.log(err);
                     });
                 } else {
                     erroresRegister.message = "El email ya se encuentra registrado";
                     res.locals.erroresRegister = erroresRegister;
                     return res.render('register');
                 }
-            })
-            .catch() 
+            }).catch((err) => {
+                console.log(err);
+            });
+            
         }       
+    },
+    login: function (req,res) {
+        return res.render("login")
+    },
+    procesarLogin : (req, res) => {
+        let info = req.body;
+        let filtro = {where : [ { email : info.email}]};
+        let erroresLogin = {};
+
+        if (info.mail == "") {
+            erroresLogin.message = "El mail está vacío";
+            res.locals.erroresLogin = erroresLogin;
+            return res.render('login');
+            
+        } else if (info.password == "") {
+            erroresLogin.message = "La contraseña está vacía";
+            res.locals.erroresLogin = erroresLogin;
+            return res.render('login');            
+        }else {
+            Usuarios.findOne(filtro)
+        .then((result) => {
+            
+            if (result != null) {
+
+                let passEncriptada = bcrypt.compareSync(info.password , result.contrasena)
+                if (passEncriptada) {
+
+                    req.session.usuario = result.dataValues; // creo la propiedad usuarios
+
+                    if (req.body.remember != undefined) {
+                        res.cookie('id', result.dataValues.id, {maxAge : 1000 * 60 *10 } )
+                    }
+                    return res.redirect("/")
+
+                } else {
+                    erroresLogin.message = "Existe el mail " +  result.email + " pero la clave es incorrecta";
+                    res.locals.erroresLogin = erroresLogin;
+                    return res.render('login');                   
+                }
+               
+            } else {
+                erroresLogin.message = "No existe este mail " +  info.email ;
+                res.locals.erroresLogin = erroresLogin;
+                return res.render('login');
+            }
+
+        }).catch((err) => {
+            console.log(err);
+        });
+        }
+    },      
+    logout: (req,res) => {
+
+        req.session.destroy();
+        res.clearCookie('id');      
+        return res.redirect("/")
+        
     },
     index: (req, res) => {
         let id = req.params.id;
 
         Usuarios.findByPk(id, { 
-          include: [
-              {association: 'productoUsuario'},
-              {association: 'comentario'}
+          include: {
+              all: true,
+              nested: true
+          }
+            
 
-          ]
+          
         })
         .then(result =>{
           console.log(result.dataValues.productoUsuario);

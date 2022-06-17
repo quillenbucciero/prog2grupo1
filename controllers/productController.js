@@ -37,7 +37,6 @@ const productController = {
         imagen: imagen,
         updated_at: new Date(),
         usuario_id: usuarioId
-
       }
 
       Productos.create(productoNuevo)
