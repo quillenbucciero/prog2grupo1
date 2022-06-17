@@ -9,7 +9,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 const productsRouter = require('./routes/product');
 const profileRouter = require('./routes/profile');
-const searchResultsRouter = require('./routes/search-results')
 
 /* Requerimiento de db */ 
 const db = require('./database/models');
@@ -71,7 +70,6 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/product' , productsRouter); 
 app.use('/profile', profileRouter);
-app.use('/search-results', searchResultsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
