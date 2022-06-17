@@ -6,3 +6,4 @@ const searchController = require('../controllers/search-resultsController')
 router.get('/', searchController.index);
 
 module.exports = router;
+

@@ -36,11 +36,8 @@ const productController = {
         created_at: new Date(),
         imagen: imagen,
         updated_at: new Date(),
-<<<<<<< HEAD
-        usuario_id: req.cookies.id
-=======
         usuario_id: usuarioId
->>>>>>> ee73a715f925788a1a8eb8d2c79889bb606f5e74
+
       }
 
       Productos.create(productoNuevo)
@@ -90,7 +87,7 @@ const productController = {
           return res.send(err)
         })
       },
-      comentarios: (req,res) => {
+    comentarios: (req,res) => {
         
           Comentarios.findAll( {
             limit: 6,
@@ -115,10 +112,10 @@ const productController = {
 
 
       },
-      comentarioNuevo: function (req,res) {
+    comentarioNuevo: function (req,res) {
         return res.render('register')
       },
-      procesarComentarioNuevo: (req, res) => {
+    procesarComentarioNuevo: (req, res) => {
 
         let idProducto = req.params.id;
 
@@ -136,7 +133,7 @@ const productController = {
           console.log("Este es el error" + err);
       });
       },
-      borrarProducto: (req,res) => {
+    borrarProducto: (req,res) => {
         let idProducto = req.params.id;
         let filtro = {where : [ {user_id : req.sesion.id}]} // REVISAR ESTO
         if (condition) {
