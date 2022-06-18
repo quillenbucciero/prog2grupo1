@@ -8,17 +8,17 @@ module.exports = function(sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER
         },
+        imagen: {
+            type: dataTypes.STRING,
+
+        },
         nombre: {
             type: dataTypes.STRING
         },
         descripcion : {
             type: dataTypes.STRING,
 
-        },
-        imagen: {
-            type: dataTypes.STRING,
-
-        },
+        },        
         created_at : {
             type: dataTypes.DATE,
             allowNull:true,

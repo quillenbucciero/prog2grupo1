@@ -55,14 +55,11 @@ app.use(function(req, res, next) {
       return next();
 
     }).catch((err) => {
-
       console.log(err);
-
     });
   }  else {
     return next();
-    }
-  
+    }  
 });
 
 

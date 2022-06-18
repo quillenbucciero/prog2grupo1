@@ -17,7 +17,7 @@ const productController = {
         .then((result) =>{
           
           return res.render("product", {
-              producto : result,
+              producto : result.dataValues,
 
           })
         }).catch((err) => {
@@ -28,7 +28,7 @@ const productController = {
         return res.render('product-add')
     },
     procesarAgregar: (req, res) => {
-      let usuarioId = req.sesion.id;
+      let usuarioId = req.session.usuario.id;
       let imagen = req.file.filename;
       let productoNuevo = {
         nombre: req.body.nombre,
@@ -70,11 +70,12 @@ const productController = {
       },
     procesarEdit: (req,res)=> {
         let idEditar = req.params.id;
-
+        let imagen = req.file.filename;
         Productos.update({
           
               nombre: req.body.nombre,
               descripcion: req.body.descripcion,
+              imagen: imagen,
               updated_at: new Date()         
           }, 
           { where : 
@@ -88,8 +89,13 @@ const productController = {
       },
     comentarios: (req,res) => {
         
+        let idProducto = req.params.id;
+
           Comentarios.findAll( {
-            limit: 6,
+            where: [
+              {producto_id: idProducto}
+            ],
+            limit: 3,
             order: [
                 ['created_at', 'DESC'] 
             ],
@@ -103,7 +109,7 @@ const productController = {
             console.log(result);
 
             return res.render('product', {
-                data: result,
+                data: result.dataValues,
             })
         }).catch((err) => {
             console.log(err);
@@ -121,31 +127,37 @@ const productController = {
         let ComentarioNuevo = {
           texto: req.body.texto,
           producto_id: idProducto,
-          usuario_id: req.sesion.id
+          usuario_id: req.session.usuario.id
 
         }
 
         Comentarios.create(ComentarioNuevo)
         .then((result) => {
-          return res.redirect("/product/id")
+          return res.redirect("/product/id/:id")
         }).catch((err) => {
           console.log("Este es el error" + err);
       });
       },
     borrarProducto: (req,res) => {
         let idProducto = req.params.id;
-        let filtro = {where : [ {user_id : req.sesion.id}]} // REVISAR ESTO
-        if (condition) {
-          Productos.destroy({
-            where: {
-              id : idProducto
-            }
-          })
-        
-      } else {
-        return res.redirect("/id/:id")
+        Productos.findByPk(idProducto)
+        .then ((result) => {
+             let idUsuario =  req.session.usuario.id;
+              if (result.dataValues.usuario_id == idUsuario) {
+                Productos.destroy({
+                  where: {
+                    id : idProducto
+                  }
+                })
+                
+              } else {
+                return res.redirect("/")
+              }
+        }).catch ((err) => {
+          console.log("Este es el error" + err);
+        })
       }
-      }
+      
 }
 
 module.exports = productController;

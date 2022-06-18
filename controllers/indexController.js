@@ -43,7 +43,16 @@ const indexController = {
                                          { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
                                     ] 
                                 });
-        Promise.all([promesaNombre, promesaDescripcion])
+
+        let erroresBuscador= {};
+
+        if (req.query.search == "") {
+            erroresBuscador.message = "Lo sentimos, no hay resultados para su criterio de búsqueda";
+            res.locals.erroresBuscador = erroresBuscador;
+            return res.render('search-results')
+
+        } else {
+            Promise.all([promesaNombre, promesaDescripcion])
         .then(function([resNombre, resDescripcion]){
             let arrDeResultados = [];
             for (let i = 0; i < resNombre.length; i++) {
@@ -74,12 +83,8 @@ const indexController = {
         .catch((error) => `'Error: ${error}`)*/
         
     }
-    }
+    } 
 
-
-    
-
-module.exports = indexController;
-
-
+}
+    module.exports = indexController;
 

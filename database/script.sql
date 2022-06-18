@@ -9,16 +9,16 @@ VALUES ('Phyllis', 'Vance', 'phyllis@gmail.com', 'vance124', '1965-12-12', '2149
 INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, `updated_at`) 
 VALUES ('Andy', 'Samberg', 'andysamberg@gmail.com', 'andy99', '1999-9-9', '20999111', 'andysamberg.jpg', '2022-06-13', '2022-02-22');
 
-INSERT INTO `prog2`.`comentarios` (`texto`,  `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Muy rica chocolatada!', '2022-02-22', '1', '1');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Igual a la mayonesa normal',  '2022-02-23', '2', '2');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
+INSERT INTO `prog2`.`comentarios` (`texto`,  `created_at`, `updated_at`, `producto_id`, `usuario_id`) 
+VALUES ('Muy rica chocolatada!', '2022-02-22', '2022-02-22','1', '1');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `updated_at`,`producto_id`, `usuario_id`) 
+VALUES ('Igual a la mayonesa normal',  '2022-02-23', '2022-02-23','2', '2');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `updated_at`,`producto_id`, `usuario_id`) 
 VALUES ('Qué rico yogur!', '2022-02-24', '3', '3');
-INSERT INTO `prog2`.`comentarios` (`texto`,`created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Muy buen alfajor de chocolate',  '2022-02-25', '4', '4');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Me encantó la pizza', '2022-02-26',  '5', '5');
+INSERT INTO `prog2`.`comentarios` (`texto`,`created_at`, `updated_at`,`producto_id`, `usuario_id`) 
+VALUES ('Muy buen alfajor de chocolate',  '2022-02-25', '2022-02-24','4', '4');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `updated_at`,`producto_id`, `usuario_id`) 
+VALUES ('Me encantó la pizza', '2022-02-26',  '2022-02-25','5', '5');
 
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
 VALUES ('Bebible-chocolatada.png', 'Bebible de chocolatada', 'Bebida sin alcohol a base de almendras, sabor chocolatada, libre de gluten, sin tacc. x200 ml', '2022-06-13', '2022-02-22', '1');
@@ -37,7 +37,7 @@ VALUES ('CHICKENVIL-PARTY.png', 'CHICKENVIL PARTY', 'Medallón a base de arveja,
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
 VALUES ('Panceta-Vegana.jpg', 'Panceta Vegana Ahumada Feteada x 190gr - VEGGIELAND', 'ALIMENTO A BASE DE MANDIOCA Y SOJA CON SABOR A PANCETA AHUMADA, PRECOCIDO, CONGELADO.', '2022-06-13', '2022-02-22', '4');
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
-VALUES ('MilasDeVerduras.png', 'Milanesas de verduras', 'Alimento a base de verduras, nutritivo, ideal para todas tus comidas.', '2022-06-13', '2022-02-22', '4');
+VALUES ('MilasDeVerduras.png', 'Milanesas de verduras', 'Alimento a base de verduras, nutritivo, ideal para todas tus comidas.', '2022-06-13', '2022-02-22', '5');
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
 VALUES ('tofu.png', 'Tofu', 'Alimento a base de soja para usarlo como quieras!', '2022-06-13', '2022-02-22', '4');
 
