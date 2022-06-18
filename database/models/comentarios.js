@@ -15,6 +15,10 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.DATE,
             allowNull:true,
         },
+        updated_at: {
+            type: dataTypes.DATE,
+            allowNull: true,
+        },
         producto_id: {
             type: dataTypes.INTEGER
         },
@@ -31,7 +35,7 @@ module.exports = function(sequelize, dataTypes){
     const Comentarios = sequelize.define(alias, cols, config);
 
     //Relación con productos y usuarios
-    /*Comentarios.associate = function (models) { 
+    Comentarios.associate = function (models) { 
         Comentarios.belongsTo(models.Productos, {
             as: "productos",
             foreignKey: "producto_id"
@@ -40,7 +44,7 @@ module.exports = function(sequelize, dataTypes){
             as: "usuarios",
             foreignKey: "usuario_id"
         })
-    };*/
+    };
 
 
     return Comentarios;
