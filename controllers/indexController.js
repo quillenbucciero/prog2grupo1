@@ -1,5 +1,6 @@
 const db = require("../database/models"); //Requiero db 
-const Usuarios = db.Usuarios; //Alias de la db
+const Productos = db.Productos; //Alias de la db
+const op = db.Sequelize.Op;
 
 
 /* Requerir mi modulo instalado */
@@ -41,7 +42,16 @@ const indexController = {
                                         { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
                                     ] 
                                 });
-        Promise.all([promesaNombre, promesaDescripcion])
+
+        let erroresBuscador= {};
+
+        if (req.query.search == "") {
+            erroresBuscador.message = "Lo sentimos, no hay resultados para su criterio de búsqueda";
+            res.locals.erroresBuscador = erroresBuscador;
+            return res.render('search-results')
+
+        } else {
+            Promise.all([promesaNombre, promesaDescripcion])
         .then(function([resNombre, resDescripcion]){
             let arrDeResultados = [];
             for (let i = 0; i < resNombre.length; i++) {
@@ -55,11 +65,11 @@ const indexController = {
             })
         })
         .catch(err => console.log(err));
+        }
     }
 
 }
     
-
 module.exports = indexController;
 
 
