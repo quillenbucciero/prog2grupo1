@@ -36,3 +36,9 @@ INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`
 VALUES ('CHICKENVIL-PARTY.png', 'CHICKENVIL PARTY', 'Medallón a base de arveja, sabor pollo, libre de gluten.', '2022-06-13', '2022-02-22', '4');
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
 VALUES ('Panceta-Vegana.jpg', 'Panceta Vegana Ahumada Feteada x 190gr - VEGGIELAND', 'ALIMENTO A BASE DE MANDIOCA Y SOJA CON SABOR A PANCETA AHUMADA, PRECOCIDO, CONGELADO.', '2022-06-13', '2022-02-22', '4');
+INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
+VALUES ('MilasDeVerduras.png', 'Milanesas de verduras', 'Alimento a base de verduras, nutritivo, ideal para todas tus comidas.', '2022-06-13', '2022-02-22', '4');
+INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `updated_at`, `usuario_id`) 
+VALUES ('tofu.png', 'Tofu', 'Alimento a base de soja para usarlo como quieras!', '2022-06-13', '2022-02-22', '4');
+
+

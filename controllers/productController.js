@@ -87,7 +87,7 @@ const productController = {
           return res.send(err)
         })
       },
-      comentarios: (req,res) => {
+    comentarios: (req,res) => {
         
         let idProducto = req.params.id;
 
@@ -117,10 +117,10 @@ const productController = {
 
 
       },
-      comentarioNuevo: function (req,res) {
+    comentarioNuevo: function (req,res) {
         return res.render('register')
       },
-      procesarComentarioNuevo: (req, res) => {
+    procesarComentarioNuevo: (req, res) => {
 
         let idProducto = req.params.id;
 
@@ -138,7 +138,7 @@ const productController = {
           console.log("Este es el error" + err);
       });
       },
-      borrarProducto: (req,res) => {
+    borrarProducto: (req,res) => {
         let idProducto = req.params.id;
         Productos.findByPk(idProducto)
         .then ((result) => {

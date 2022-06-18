@@ -1,5 +1,9 @@
 const db = require("../database/models"); //Requiero db 
-const Productos = db.Productos; //Alias de la db
+const Usuarios = db.Usuarios; //Alias de la db
+
+
+/* Requerir mi modulo instalado */
+const bcrypt = require('bcryptjs');
 
 const indexController = {
     index: function (req,res) {
@@ -52,15 +56,11 @@ const indexController = {
         })
         .catch(err => console.log(err));
     }
-  /*EN CASO DE NO ENCONTRAR RTDOS MOSTRAR MENSAJE*/
-};
+
+}
     
 
-
-
 module.exports = indexController;
-
-
 
 
 

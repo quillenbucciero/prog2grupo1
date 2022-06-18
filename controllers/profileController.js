@@ -126,11 +126,13 @@ const profileController = {
         let id = req.params.id;
 
         Usuarios.findByPk(id, { 
-          include: [
-              {association: 'productoUsuario'},
-              {association: 'comentario'}
+          include: {
+              all: true,
+              nested: true
+          }
+            
 
-          ]
+          
         })
         .then(result =>{
           console.log(result.dataValues.productoUsuario);
