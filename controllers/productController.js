@@ -8,12 +8,16 @@ const productController = {
     detalle : (req, res) => {
         let id = req.params.id;
 
-        Productos.findByPk(id, {
-          include: {
-            all : true,
-            nested : true
-        }
-        })
+        let comentarios = {
+          include : {
+              all: true,
+              nested: true
+          },
+          order : [
+            ["comentarioProducto", "createdAt" , "DESC"]
+          ]
+      }
+        Productos.findByPk(id, comentarios)
         .then((result) =>{
           
           return res.render("product", {
@@ -82,82 +86,54 @@ const productController = {
             { id: idEditar}
           })
         .then ((result) => {
-          return res.redirect("/")
+          return res.redirect("/product/id/" + idEditar)
         }).catch((err) => {
           return res.send(err)
         })
       },
-    comentarios: (req,res) => {
-        
-        let idProducto = req.params.id;
+      comentarioNuevo: function (req,res) {
+          return res.render('register')
+        },
+      procesarComentarioNuevo: (req, res) => {
 
-          Comentarios.findAll( {
-            where: [
-              {producto_id: idProducto}
-            ],
-            limit: 3,
-            order: [
-                ['created_at', 'DESC'] 
-            ],
-            include: {
-                all : true,
-                nested : true
-            }
-        })
-        .then(function (result) {
+          let idProducto = req.params.id;
+          let usuarioId = req.session.usuario.id;
+          let ComentarioNuevo = {
+            texto: req.body.texto,
+            created_at: new Date(),
+            updated_at: new Date(),
+            producto_id: idProducto,
+            usuario_id: usuarioId
+            
+          }
 
-            console.log(result);
-
-            return res.render('product', {
-                data: result.dataValues,
-            })
-        }).catch((err) => {
-            console.log(err);
+          Comentarios.create(ComentarioNuevo)
+          .then((result) => {
+            return res.redirect("/product/id/" + idProducto)
+          }).catch((err) => {
+            console.log("Este es el error" + err);
         });
-
-
-      },
-    comentarioNuevo: function (req,res) {
-        return res.render('register')
-      },
-    procesarComentarioNuevo: (req, res) => {
-
-        let idProducto = req.params.id;
-
-        let ComentarioNuevo = {
-          texto: req.body.texto,
-          producto_id: idProducto,
-          usuario_id: req.session.usuario.id
-
+        },
+      borrarProducto: (req,res) => {
+          let idProducto = req.params.id;
+          Productos.findByPk(idProducto)
+          .then ((result) => {
+              let idUsuario =  req.session.usuario.id;
+                if (result.dataValues.usuario_id == idUsuario) {
+                  Productos.destroy({
+                    where: {
+                      id : idProducto
+                    }
+                  })
+                  
+                } else {
+                  return res.redirect("/")
+                }
+          }).catch ((err) => {
+            console.log("Este es el error" + err);
+          })
         }
-
-        Comentarios.create(ComentarioNuevo)
-        .then((result) => {
-          return res.redirect("/product/id/:id")
-        }).catch((err) => {
-          console.log("Este es el error" + err);
-      });
-      },
-    borrarProducto: (req,res) => {
-        let idProducto = req.params.id;
-        Productos.findByPk(idProducto)
-        .then ((result) => {
-             let idUsuario =  req.session.usuario.id;
-              if (result.dataValues.usuario_id == idUsuario) {
-                Productos.destroy({
-                  where: {
-                    id : idProducto
-                  }
-                })
-                
-              } else {
-                return res.redirect("/")
-              }
-        }).catch ((err) => {
-          console.log("Este es el error" + err);
-        })
-      }
-      
+        
 }
 
 module.exports = productController;

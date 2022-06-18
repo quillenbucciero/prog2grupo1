@@ -32,6 +32,6 @@ router.get('/id/:id/comentario', productController.comentarioNuevo);
 
 router.post('/id/:id/comentario', productController.procesarComentarioNuevo);
 
-router.get('/borrar', productController.borrarProducto);
+router.post('/borrar/id/:id', productController.borrarProducto);
 
 module.exports = router;
