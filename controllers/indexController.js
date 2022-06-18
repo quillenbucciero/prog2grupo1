@@ -1,6 +1,8 @@
 const db = require("../database/models"); //Requiero db 
-const Usuarios = db.Usuarios; //Alias de la db
-
+const Productos = db.Productos; //Alias de la db
+const Comentarios = db.Comentarios;
+const Usuarios = db.Usuarios;
+const op = db.Sequelize.Op;
 
 /* Requerir mi modulo instalado */
 const bcrypt = require('bcryptjs');
@@ -29,16 +31,16 @@ const indexController = {
             console.log(err);
         });
     },
-    search: function(req,res){  
+     search: function(req,res){  
         let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
-                                where:[
-                                    { nombre:{ [op.like]: `%${palabraBuscada}%`}}
-                                ] 
-                            });
+                                 where:[
+                                     { nombre:{ [op.like]: `%${palabraBuscada}%`}}
+                                 ] 
+                             });
         let promesaDescripcion = Productos.findAll({
-                                    where:[
-                                        { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
+                                     where:[
+                                         { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
                                     ] 
                                 });
         Promise.all([promesaNombre, promesaDescripcion])
@@ -47,7 +49,7 @@ const indexController = {
             for (let i = 0; i < resNombre.length; i++) {
                 arrDeResultados.push(resNombre[i])
             } 
-            for (let i = 0; i < resDescripcion.length; i++) {
+           for (let i = 0; i < resDescripcion.length; i++) {
                 arrDeResultados.push(resDescripcion[i])
             } 
             res.render('search-results', {
@@ -55,9 +57,26 @@ const indexController = {
             })
         })
         .catch(err => console.log(err));
+    /*search: function (req,res) {
+        
+        let buscar = req.query.search
+
+        Productos.findAll({
+            include: [ {association: 'usuarioProducto'}, {association: 'comentarioProducto'},],
+            where: { [op.or] : [
+                {descripcion: {[op.like]: `%${buscar}`}},
+                {nombre: {[op.like]: `%${buscar}`}},
+
+            ]
+            }
+        })
+        .then((resultados)=> res.render('search-results', {resultados}))
+        .catch((error) => `'Error: ${error}`)*/
+        
+    }
     }
 
-}
+
     
 
 module.exports = indexController;
