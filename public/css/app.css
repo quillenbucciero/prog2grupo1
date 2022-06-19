@@ -326,7 +326,7 @@ hr {
 }
 
 .product-detail-img {
-  width: 70%;
+  width: 55%;
   display: block;
   margin: auto;
 }
@@ -356,6 +356,24 @@ hr {
   padding: 0 15px;
   display: flex;
   flex-direction: column;
+}
+.form-detail-product-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  
+}
+.form-detail-product {
+  background-color: #666666;
+  border: none;
+  border-radius: 10%;
+  margin: 10px;
+  font-size: 19px;
+  padding: 6px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 .small {
   font-size: 1.8em;

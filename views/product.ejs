@@ -10,17 +10,22 @@
 	<% } else {%>
 		<%- include('./partials/headerDeslogueado') %>
 	<% } %> 
-	<!--Header-->
+	<!--Header-->		
 	
 	<!-- product detail -->
 		<div class="container products-wrapper">
 			<div class="d-flex align-items-center">
 				<h2 class="products-title"><%= producto.nombre %></h2> 
 				<p class="product-detail-description">
-				<% if (locals.usuario != undefined && locals.usuario == producto.usuario_id) { %>
-					<a href="/product/edit/id/<%= producto.id %>">Editar</a>
-					
-					<a href="/borrar/<%= producto.id %>">Borrar Producto</a>
+				<% if (locals.usuario != undefined && locals.usuario.id == producto.usuario_id) { %>
+					<div class="form-detail-product-container"> 
+						<a href="/product/edit/id/<%= producto.id %>"> <button class="form-detail-product">Editar</button></a>	
+
+					<form action="/product/borrar/id/<%= producto.id %>" method="post" >
+						<button class="form-detail-product">Borrar Producto </button>
+					</form>
+					</div>					
+									
 				<% } %>
 				</p>
 			</div>
@@ -28,19 +33,20 @@
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src= "/images/products/<%= producto.imagen %>"  alt="<%= producto.nombre %>" class="product-detail-img"> <!-- CAMBIAR LINK DESPUES!!-->
-						<p class="product-detail-description"> <%= producto.descripcion %>. Cargado el día: <%= producto.created_at %> por el usuario  </a></p>
+						<img src= "/images/products/<%= producto.imagen %>"  alt="<%= producto.nombre %>" class="product-detail-img"> 
+						<p class="product-detail-description"> <%= producto.descripcion %>. </p>
+						<p class="product-detail-description">Cargado el día: <%= producto.created_at %> por el usuario <strong> <a href="/profile/id/<%= producto.usuarioProducto.id %>"><%= producto.usuarioProducto.nombre %> <%= producto.usuarioProducto.apellido %> </a></strong></p>
 					</article>
 					<!--Comentarios-->
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for( let i = 0; i < data.length; i++ ) { %>
+						<% for( let i = 0; i < producto.comentarioProducto.length; i++ ) { %>
 							<article>
-								<img src="<%= data[i].usuarios.foto_de_perfil %>" alt="Foto de perfil">
+								<img src="/images/users/<%= producto.comentarioProducto[i].usuarios.foto_de_perfil %>" alt="Foto de perfil">
 								<div class="data">
 									<p class="user">
-										<strong> <a href="/profile/id/"><%= data[i].usuarios.id %></strong></a> 
-										<%= data[i].texto %> 
+										<strong> <a href="/profile/id/<%= producto.comentarioProducto[i].usuarios.id %>"> <%= producto.comentarioProducto[i].usuarios.nombre %> <%= producto.comentarioProducto[i].usuarios.apellido %></a> </strong>
+										<%=  producto.comentarioProducto[i].texto %> 
 									</p>
 								</div>
 							</article>  
