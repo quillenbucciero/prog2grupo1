@@ -21,7 +21,8 @@ imagen VARCHAR(500) NOT NULL,
 nombre VARCHAR(100) NOT NULL,
 descripcion VARCHAR(1000) NOT NULL,
 created_at DATE NOT NULL,
-updated_at DATE NOT NULL,
+updated_at DATE,
+deleted_at DATE,
 usuario_id INT UNSIGNED,
 
 FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
@@ -31,7 +32,7 @@ CREATE TABLE comentarios (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 texto VARCHAR(500) NOT NULL,
 created_at DATE NOT NULL,
-updated_at DATE NOT NULL,
+updated_at DATE,
 producto_id INT UNSIGNED,
 
 FOREIGN KEY (producto_id) REFERENCES productos(id),
