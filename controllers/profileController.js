@@ -138,7 +138,7 @@ const profileController = {
           console.log(result.dataValues.productoUsuario);
           
           return res.render("profile", {
-              usuario : result,
+              user : result,
 
           })
         }).catch((err) => {

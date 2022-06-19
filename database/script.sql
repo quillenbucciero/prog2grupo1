@@ -1,24 +1,14 @@
-INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, ` _at`) 
-VALUES ('Dwight', 'Schrute', 'dwightschrute@gmail.com', 'dwight123', '1980-02-02', '22333444', 'dwight.webp', '2022-06-13', '2022-02-22');
-INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, ` _at`) 
-VALUES ('Lionel', 'Messi', 'leomessi@gmail.com', 'leo10', '1980-10-10', '33100100', 'messi.jpg', '2022-06-13', '2022-02-22');
-INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, ` _at`) 
-VALUES ('Jim', 'Halpert', 'jimhalpert@gmail.com', 'jimpam', '1970-07-07', '33444555', 'jim.webp', '2022-06-13', '2022-02-22');
-INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, ` _at`) 
-VALUES ('Phyllis', 'Vance', 'phyllis@gmail.com', 'vance124', '1965-12-12', '21496077', 'phyllis.webp', '2022-06-13', '2022-02-22');
-INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`, ` _at`) 
-VALUES ('Andy', 'Samberg', 'andysamberg@gmail.com', 'andy99', '1999-9-9', '20999111', 'andysamberg.jpg', '2022-06-13', '2022-02-22');
+INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`) 
+VALUES ('Dwight', 'Schrute', 'dwightschrute@gmail.com', 'dwight123', '1980-02-02', '22333444', 'dwight.webp', '2022-06-13');
+INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`) 
+VALUES ('Lionel', 'Messi', 'leomessi@gmail.com', 'leo10', '1980-10-10', '33100100', 'messi.jpg', '2022-06-13');
+INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`) 
+VALUES ('Jim', 'Halpert', 'jimhalpert@gmail.com', 'jimpam', '1970-07-07', '33444555', 'jim.webp', '2022-06-13');
+INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`) 
+VALUES ('Phyllis', 'Vance', 'phyllis@gmail.com', 'vance124', '1965-12-12', '21496077', 'phyllis.webp', '2022-06-13');
+INSERT INTO `prog2`.`usuarios` (`nombre`, `apellido`, `email`, `contrasena`, `fecha_de_nacimiento`, `documento`, `foto_de_perfil`, `created_at`) 
+VALUES ('Andy', 'Samberg', 'andysamberg@gmail.com', 'andy99', '1999-9-9', '20999111', 'andysamberg.jpg', '2022-06-13');
 
-INSERT INTO `prog2`.`comentarios` (`texto`,  `created_at`,  `producto_id`, `usuario_id`) 
-VALUES ('Muy rica chocolatada!', '2022-02-22', '1', '1');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Igual a la mayonesa normal',  '2022-02-23', '2', '2');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Qué rico yogur!', '2022-02-24', '3', '3');
-INSERT INTO `prog2`.`comentarios` (`texto`,`created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Muy buen alfajor de chocolate',  '2022-02-25', '4', '4');
-INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
-VALUES ('Me encantó la pizza', '2022-02-26',  '5', '5');
 
 INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`, `usuario_id`) 
 VALUES ('Bebible-chocolatada.png', 'Bebible de chocolatada', 'Bebida sin alcohol a base de almendras, sabor chocolatada, libre de gluten, sin tacc. x200 ml', '2022-06-13', '1');
@@ -42,3 +32,13 @@ INSERT INTO `prog2`.`productos` (`imagen`, `nombre`, `descripcion`, `created_at`
 VALUES ('tofu.png', 'Tofu', 'Alimento a base de soja para usarlo como quieras!', '2022-06-13', '5');
 
 
+INSERT INTO `prog2`.`comentarios` (`texto`,  `created_at`,  `producto_id`, `usuario_id`) 
+VALUES ('Muy rica chocolatada!', '2022-02-22', '1', '1');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
+VALUES ('Igual a la mayonesa normal',  '2022-02-23', '2', '2');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
+VALUES ('Qué rico yogur!', '2022-02-24', '3', '3');
+INSERT INTO `prog2`.`comentarios` (`texto`,`created_at`, `producto_id`, `usuario_id`) 
+VALUES ('Muy buen alfajor de chocolate',  '2022-02-25', '4', '4');
+INSERT INTO `prog2`.`comentarios` (`texto`, `created_at`, `producto_id`, `usuario_id`) 
+VALUES ('Me encantó la pizza', '2022-02-26',  '5', '5');

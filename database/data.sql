@@ -12,7 +12,8 @@ fecha_de_nacimiento DATE NOT NULL,
 documento INT NOT NULL,
 foto_de_perfil VARCHAR(500) NOT NULL,
 created_at DATE NOT NULL,
-updated_at DATE NOT NULL
+updated_at DATE,
+deleted_at DATE,
 );
 
 CREATE TABLE productos (

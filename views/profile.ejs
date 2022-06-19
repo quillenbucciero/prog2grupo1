@@ -15,24 +15,24 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="/images/users/<%= usuario.foto_de_perfil %> " alt="<%= usuario.nombre %> <%= usuario.apellido %> " class="foto-perfil">
+				<img src="/images/users/<%= user.foto_de_perfil %> " alt="<%= user.nombre %> <%= user.apellido %> " class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= usuario.nombre %> 
-						<a href="/profile/edit/id/ <%= usuario.id %> ">
+					<h1 class="main-title"> <%= user.nombre %> 
+						<a href="/profile/edit/id/ <%= user.id %> ">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
 
-				<h3> <%= usuario.email %> </h3>
+				<h3> <%= user.email %> </h3>
 
 				<div>
 					<ul class="">
-						<li>8 productos</li>  <!-- cantidad -->
-						<li>300 comentarios</li>
+						<li>  <%= user.productoUsuario.length %> productos</li>  <!-- cantidad -->
+						<li>  <%= user.comentario.length %> comentarios</li>
 					</ul>
 				</div>
 			</div>
@@ -47,20 +47,20 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for(let i = 0; i < usuario.productoUsuario.length; i++){ %>
+			<% for(let i = 0; i < user.productoUsuario.length; i++){ %>
 				
 			<div class="col-12 col-sm-6 col-lg-3">
 				
 				<section class="product-box">
 	
-					<a href="/product/id/<%= usuario.productoUsuario[i].dataValues.id %>"> 
+					<a href="/product/id/<%= user.productoUsuario[i].dataValues.id %>"> 
 						<figure class="product-box_image">
-							<img src="/images/products/<%= usuario.productoUsuario[i].dataValues.imagen %> " alt="<% usuario.productoUsuario[i].dataValues.nombre%> ">
+							<img src="/images/products/<%= user.productoUsuario[i].dataValues.imagen %> " alt="<% user.productoUsuario[i].dataValues.nombre%> ">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= usuario.productoUsuario[i].dataValues.nombre %> </h2>
-							<p><%= usuario.productoUsuario[i].dataValues.descripcion %></p>
-							<p>Comentarios: 12</p>
+							<h2><%= user.productoUsuario[i].dataValues.nombre %> </h2>
+							<p><%= user.productoUsuario[i].dataValues.descripcion %></p>
+							<p>Comentarios: <%= user.productoUsuario[i].comentarioProducto.length %></p>
 						</article>
 					</a>
 				</section>

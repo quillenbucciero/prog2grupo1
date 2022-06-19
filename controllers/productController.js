@@ -92,7 +92,8 @@ const productController = {
         })
       },
       comentarioNuevo: function (req,res) {
-          return res.render('register')
+        let id = req.params.id 
+          return res.render('/product/id/' + id)
         },
       procesarComentarioNuevo: (req, res) => {
 
@@ -101,17 +102,14 @@ const productController = {
           let ComentarioNuevo = {
             texto: req.body.texto,
             created_at: new Date(),
-            updated_at: new Date(),
             producto_id: idProducto,
-            usuario_id: usuarioId
-            
+            usuario_id: usuarioId            
           }
-
           Comentarios.create(ComentarioNuevo)
           .then((result) => {
             return res.redirect("/product/id/" + idProducto)
           }).catch((err) => {
-            console.log("Este es el error" + err);
+            console.log("Este es el error " + err);
         });
         },
       borrarProducto: (req,res) => {
@@ -119,18 +117,22 @@ const productController = {
           Productos.findByPk(idProducto)
           .then ((result) => {
               let idUsuario =  req.session.usuario.id;
-                if (result.dataValues.usuario_id == idUsuario) {
-                  Productos.destroy({
-                    where: {
-                      id : idProducto
-                    }
-                  })
-                  
+                if (result.usuario_id == idUsuario) {
+                    Productos.destroy({
+                      where: {
+                        id : idProducto
+                      }
+                    })
+                    .then ((result) => {
+                      return res.redirect("/")
+                    }).catch ((err) => {
+                      console.log("Este es el error " + err);
+                    });                  
                 } else {
-                  return res.redirect("/")
+                  return res.redirect("/product/id/" + idProducto)
                 }
           }).catch ((err) => {
-            console.log("Este es el error" + err);
+            console.log("Este es el error " + err);
           })
         }
         
