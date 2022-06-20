@@ -37,14 +37,12 @@ const indexController = {
                     });
         let erroresBuscador = {};
         if(palabraBuscada == "") {
-            erroresBuscador.message = 'Lo sentimos, no hay resultados';
             res.locals.erroresBuscador = erroresBuscador;
             return res.render('search-results')
         } else {  
             Promise.all([promesaNombre, promesaDescripcion]) //Le paso como parametro promesaNombre y promesaDescripcion
             .then(function([resNombre, resDescripcion]){
                 if (resNombre.length === 0 && resDescripcion.length === 0){
-                    erroresBuscador.message = 'Lo sentimos, no hay resultados';
                     res.locals.erroresBuscador = erroresBuscador;
                     return res.render('search-results')
                 } 
