@@ -91,12 +91,10 @@ const productController = {
           return res.send(err)
         })
       },
-      comentarioNuevo: function (req,res) {
-        let id = req.params.id 
-          return res.render('/product/id/' + id)
+      comentarioNuevo: function (req,res) {        
+          return res.render('product')
         },
       procesarComentarioNuevo: (req, res) => {
-
           let idProducto = req.params.id;
           let usuarioId = req.session.usuario.id;
           let ComentarioNuevo = {
@@ -118,11 +116,7 @@ const productController = {
           .then ((result) => {
               let idUsuario =  req.session.usuario.id;
                 if (result.usuario_id == idUsuario) {
-                    Productos.destroy({
-                      where: {
-                        id : idProducto
-                      }
-                    })
+                    Productos.destroy({ where: { id : idProducto } })
                     .then ((result) => {
                       return res.redirect("/")
                     }).catch ((err) => {
