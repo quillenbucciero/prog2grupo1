@@ -20,8 +20,9 @@
 		</div>
 	</div>
 
+
+   <% if(locals.erroresBuscador !== "undefined") { %> 
 	
-   <% if(erroresBuscador != undefined) { %> 
 	<div class="col-12 ">
 		<h2 class="mensajeError" style="color: red;"> <i class="fa-solid fa-circle-xmark"></i> No hay resultados para su criterio de busqueda</h2>
 	</div>
@@ -43,6 +44,8 @@
 			</div>
 		<% } %> 
 	<% } %> 
+
+
 
 	<!-- footer -->
 	<%- include('./partials/footer') %> 

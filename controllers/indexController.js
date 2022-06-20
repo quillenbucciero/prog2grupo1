@@ -20,8 +20,6 @@ const indexController = {
         })
         .then(function (result) {
 
-            console.log(result);
-
             return res.render('index', {
                 data: result,
             })
@@ -37,9 +35,7 @@ const indexController = {
         let promesaDescripcion = Productos.findAll({
                         where:[{ descripcion:{ [op.like]: `%${palabraBuscada}%`}}]
                     });
-    
         let erroresBuscador = {};
-
         if(palabraBuscada == "") {
             erroresBuscador.message = 'Lo sentimos, no hay resultados';
             res.locals.erroresBuscador = erroresBuscador;
@@ -47,6 +43,12 @@ const indexController = {
         } else {  
             Promise.all([promesaNombre, promesaDescripcion]) //Le paso como parametro promesaNombre y promesaDescripcion
             .then(function([resNombre, resDescripcion]){
+                if (resNombre.length === 0 && resDescripcion.length === 0){
+                    erroresBuscador.message = 'Lo sentimos, no hay resultados';
+                    res.locals.erroresBuscador = erroresBuscador;
+                    return res.render('search-results')
+                } 
+                res.locals.erroresBuscador = "undefined";
                 let arrDeResultados = [];
                 for (let i = 0; i < resNombre.length; i++) {
                     arrDeResultados.push(resNombre[i])

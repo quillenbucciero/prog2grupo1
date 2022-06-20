@@ -148,8 +148,6 @@ const profileController = {
     edit: (req,res) => {
         let idEditar = req.params.id;
 
-
-
         Usuarios.findByPk(idEditar)
         .then((result) => { /*muestro sus datos xa poder editar*/
             let usuario = {
@@ -163,9 +161,6 @@ const profileController = {
                 foto_de_perfil: result.dataValues.foto_de_perfil, 
                 updated_at: new Date(),
             }
-
-            
-
             return res.render('profile-edit', {
                 usuario: usuario
             });    
@@ -175,7 +170,7 @@ const profileController = {
         let idEditar = req.params.id;
 
         /*let foto_de_perfil = req.file.filename;*/
-
+        console.log(req.body.fecha_de_nacimiento);
         Usuarios.update(
           {
             nombre: req.body.nombre,
@@ -184,13 +179,12 @@ const profileController = {
             usuario: req.body.usuario,
             fecha_de_nacimiento: req.body.fecha_de_nacimiento,
             documento: req.body.documento,
-            /*foto_de_perfil: foto_de_perfil,*/
-            updated_at: new Date()     
+            /*foto_de_perfil: foto_de_perfil,*/     
           }, 
-          { where : 
-            { id: idEditar}
-          })
+          {where :{ id: idEditar}})
+        
         .then ((result) => {
+            console.log(result);
           return res.redirect("/profile")
         }).catch((err) => {
           return res.send(err)
