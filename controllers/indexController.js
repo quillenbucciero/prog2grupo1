@@ -1,7 +1,5 @@
 const db = require("../database/models"); //Requiero db 
 const Productos = db.Productos; //Alias de la db
-const Comentarios = db.Comentarios;
-const Usuarios = db.Usuarios;
 const op = db.Sequelize.Op;
 
 /* Requerir mi modulo instalado */
@@ -34,36 +32,35 @@ const indexController = {
     search: function(req,res){  
         let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
-                                include: [{association: 'usuarioProducto'}],
-                                where:[
-                                    { nombre:{ [op.like]: `%${palabraBuscada}%`}}
-                                 ] 
+                                where:[{ nombre:{ [op.like]: `%${palabraBuscada}%`}}] 
                              });
         let promesaDescripcion = Productos.findAll({
-                        include: [{association: 'usuarioProducto'}],
-                                     where:[
-                                         { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
-                                   ] 
-                                });
+                        where:[{ descripcion:{ [op.like]: `%${palabraBuscada}%`}}]
+                    });
     
-    
-        Promise.all([promesaNombre, promesaDescripcion])
-        .then(function([resNombre, resDescripcion]){
-            let arrDeResultados = [];
-            for (let i = 0; i < resNombre.length; i++) {
-                arrDeResultados.push(resNombre[i])
-            } 
-           for (let i = 0; i < resDescripcion.length; i++) {
-                arrDeResultados.push(resDescripcion[i])
-            } 
-            res.render('search-results', {
-                resultados: arrDeResultados
-            })
-        })
-        .catch(err => console.log(err));
-       
-    } 
+        let erroresBuscador = {};
 
+        if(palabraBuscada == "") {
+            erroresBuscador.message = 'Lo sentimos, no hay resultados';
+            res.locals.erroresBuscador = erroresBuscador;
+            return res.render('search-results')
+        } else {  
+            Promise.all([promesaNombre, promesaDescripcion]) //Le paso como parametro promesaNombre y promesaDescripcion
+            .then(function([resNombre, resDescripcion]){
+                let arrDeResultados = [];
+                for (let i = 0; i < resNombre.length; i++) {
+                    arrDeResultados.push(resNombre[i])
+                } 
+               for (let i = 0; i < resDescripcion.length; i++) {
+                    arrDeResultados.push(resDescripcion[i])
+                } 
+                res.render('search-results', {
+                    resultados: arrDeResultados
+                })
+            })
+            .catch(err => console.log(err));
+        }
+    }
 }
-    module.exports = indexController;
+module.exports = indexController;
 

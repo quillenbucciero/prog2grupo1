@@ -134,8 +134,7 @@ const productController = {
           }).catch ((err) => {
             console.log("Este es el error " + err);
           })
-        }
-        
+        }  
 }
 
 module.exports = productController;
