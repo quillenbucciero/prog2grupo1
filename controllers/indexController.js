@@ -31,28 +31,23 @@ const indexController = {
             console.log(err);
         });
     },
-     search: function(req,res){  
+    search: function(req,res){  
         let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
-                                 where:[
-                                     { nombre:{ [op.like]: `%${palabraBuscada}%`}}
+                                include: [{association: 'usuarioProducto'}],
+                                where:[
+                                    { nombre:{ [op.like]: `%${palabraBuscada}%`}}
                                  ] 
                              });
         let promesaDescripcion = Productos.findAll({
+                        include: [{association: 'usuarioProducto'}],
                                      where:[
                                          { descripcion:{ [op.like]: `%${palabraBuscada}%`}}
-                                    ] 
+                                   ] 
                                 });
-
-        let erroresBuscador= {};
-
-        if (req.query.search == "") {
-            erroresBuscador.message = "Lo sentimos, no hay resultados para su criterio de búsqueda";
-            res.locals.erroresBuscador = erroresBuscador;
-            return res.render('search-results')
-
-        } else {
-            Promise.all([promesaNombre, promesaDescripcion])
+    
+    
+        Promise.all([promesaNombre, promesaDescripcion])
         .then(function([resNombre, resDescripcion]){
             let arrDeResultados = [];
             for (let i = 0; i < resNombre.length; i++) {
@@ -66,23 +61,7 @@ const indexController = {
             })
         })
         .catch(err => console.log(err));
-    /*search: function (req,res) {
-        
-        let buscar = req.query.search
-
-        Productos.findAll({
-            include: [ {association: 'usuarioProducto'}, {association: 'comentarioProducto'},],
-            where: { [op.or] : [
-                {descripcion: {[op.like]: `%${buscar}`}},
-                {nombre: {[op.like]: `%${buscar}`}},
-
-            ]
-            }
-        })
-        .then((resultados)=> res.render('search-results', {resultados}))
-        .catch((error) => `'Error: ${error}`)*/
-        
-    }
+       
     } 
 
 }
