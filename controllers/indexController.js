@@ -1,5 +1,5 @@
-const db = require("../database/models"); //Requiero db 
-const Productos = db.Productos; //Alias de la db
+const db = require("../database/models");      //Requiero db 
+const Productos = db.Productos;             //Alias de la db
 const op = db.Sequelize.Op;
 
 /* Requerir mi modulo instalado */
@@ -37,21 +37,23 @@ const indexController = {
                     });
         let erroresBuscador = {};
         if(palabraBuscada == "") {
+            erroresBuscador.msg = 'Ingresa tu busqueda'
             res.locals.erroresBuscador = erroresBuscador;
             return res.render('search-results')
         } else {  
-            Promise.all([promesaNombre, promesaDescripcion]) //Le paso como parametro promesaNombre y promesaDescripcion
+            Promise.all([promesaNombre, promesaDescripcion])  //Le paso como parametro un array con promesaNombre y promesaDescripcion
             .then(function([resNombre, resDescripcion]){
                 if (resNombre.length === 0 && resDescripcion.length === 0){
+                    erroresBuscador.msg = "No hay resultados para tu busqueda"
                     res.locals.erroresBuscador = erroresBuscador;
+                    console.log(res.locals)
                     return res.render('search-results')
                 } 
-                res.locals.erroresBuscador = "undefined";
                 let arrDeResultados = [];
                 for (let i = 0; i < resNombre.length; i++) {
                     arrDeResultados.push(resNombre[i])
                 } 
-               for (let i = 0; i < resDescripcion.length; i++) {
+                for (let i = 0; i < resDescripcion.length; i++) {
                     arrDeResultados.push(resDescripcion[i])
                 } 
                 res.render('search-results', {

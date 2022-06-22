@@ -41,11 +41,12 @@ module.exports = function(sequelize, dataTypes){
         timestamps: true, 
         underscored: true, 
     }
+    
 
     const Productos = sequelize.define(alias, cols, config);
 
-    
     //Relación con usuarios y comentarios
+
     Productos.associate = function (models) { 
         Productos.belongsTo(models.Usuarios, {
             as: "usuarioProducto",

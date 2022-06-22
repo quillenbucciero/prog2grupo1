@@ -21,10 +21,10 @@
 	</div>
 
 
-   <% if(locals.erroresBuscador !== "undefined") { %> 
+   <% if(locals.erroresBuscador !== undefined) { %> 
 	
 	<div class="col-12 ">
-		<h2 class="mensajeError" style="color: red;"> <i class="fa-solid fa-circle-xmark"></i> No hay resultados para su criterio de busqueda</h2>
+		<h2 class="mensajeError" style="color: red;"> <i class="fa-solid fa-circle-xmark"></i> <%= locals.erroresBuscador.msg%></h2>
 	</div>
 	<% }  else { %>
 		<% for ( let i = 0; i < resultados.length; i++ ) { %>

@@ -130,9 +130,6 @@ const profileController = {
               all: true,
               nested: true
           }
-            
-
-          
         })
         .then(result =>{
           console.log(result.dataValues.productoUsuario);
@@ -168,9 +165,9 @@ const profileController = {
     },
     procesarEdit: (req,res) => {
         let idEditar = req.params.id;
-
+        console.log(idEditar);
+        console.log(req.body);
         /*let foto_de_perfil = req.file.filename;*/
-        console.log(req.body.fecha_de_nacimiento);
         Usuarios.update(
           {
             nombre: req.body.nombre,
@@ -182,10 +179,9 @@ const profileController = {
             /*foto_de_perfil: foto_de_perfil,*/     
           }, 
           {where :{ id: idEditar}})
-        
         .then ((result) => {
             console.log(result);
-          return res.redirect("/profile")
+          return res.redirect(`/profile/id/${idEditar}`)
         }).catch((err) => {
           return res.send(err)
         })   
