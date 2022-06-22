@@ -20,13 +20,14 @@
 		</div>
 	</div>
 
-
+	<div class="resultados">
    <% if(locals.erroresBuscador !== undefined) { %> 
 	
 	<div class="col-12 ">
 		<h2 class="mensajeError" style="color: red;"> <i class="fa-solid fa-circle-xmark"></i> <%= locals.erroresBuscador.msg%></h2>
 	</div>
 	<% }  else { %>
+
 		<% for ( let i = 0; i < resultados.length; i++ ) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
@@ -44,6 +45,7 @@
 			</div>
 		<% } %> 
 	<% } %> 
+	</div>
 
 
 

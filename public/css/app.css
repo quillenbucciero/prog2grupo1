@@ -603,4 +603,9 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+  .resultados{
+    display: flex;
+    flex-direction: row;
+
+  }
 }
