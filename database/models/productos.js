@@ -45,7 +45,7 @@ module.exports = function(sequelize, dataTypes){
 
     const Productos = sequelize.define(alias, cols, config);
 
-    //Relación con usuarios y comentarios
+     //Relación con usuarios y comentarios
 
     Productos.associate = function (models) { 
         Productos.belongsTo(models.Usuarios, {

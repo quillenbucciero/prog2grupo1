@@ -28,7 +28,7 @@ const indexController = {
         });
     },
     search: function(req,res){  
-        let palabraBuscada = req.query.search; /* search es el input name del formulario de los headers*/ 
+        let palabraBuscada = req.query.search;                                           /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
                                 where:[{ nombre:{ [op.like]: `%${palabraBuscada}%`}}] 
                              });
@@ -41,12 +41,11 @@ const indexController = {
             res.locals.erroresBuscador = erroresBuscador;
             return res.render('search-results')
         } else {  
-            Promise.all([promesaNombre, promesaDescripcion])  //Le paso como parametro un array con promesaNombre y promesaDescripcion
+            Promise.all([promesaNombre, promesaDescripcion])                                //Le paso como parametro un array con promesaNombre y promesaDescripcion
             .then(function([resNombre, resDescripcion]){
                 if (resNombre.length === 0 && resDescripcion.length === 0){
                     erroresBuscador.msg = "No hay resultados para tu busqueda"
                     res.locals.erroresBuscador = erroresBuscador;
-                    console.log(res.locals)
                     return res.render('search-results')
                 } 
                 let arrDeResultados = [];

@@ -167,7 +167,7 @@ const profileController = {
         let idEditar = req.params.id;
         console.log(idEditar);
         console.log(req.body);
-        /*let foto_de_perfil = req.file.filename;*/
+        let foto_de_perfil = req.file.filename;
         Usuarios.update(
           {
             nombre: req.body.nombre,
@@ -176,7 +176,8 @@ const profileController = {
             usuario: req.body.usuario,
             fecha_de_nacimiento: req.body.fecha_de_nacimiento,
             documento: req.body.documento,
-            /*foto_de_perfil: foto_de_perfil,*/     
+            foto_de_perfil: foto_de_perfil, 
+
           }, 
           {where :{ id: idEditar}})
         .then ((result) => {
