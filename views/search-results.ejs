@@ -38,6 +38,7 @@
 							<article class="product-box_data">
 								<h2><%= resultados[i].nombre %> </h2>
 								<p><%= resultados[i].descripcion %></p>
+								<p> Cargado por el usuario <a href="/profile/id/<%= resultados[i].usuario_id%>"><%= resultados[i].usuarioProducto.nombre %> <%= resultados[i].usuarioProducto.apellido %> </a> </p>
  
 							</article>
 						</a>

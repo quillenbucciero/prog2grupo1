@@ -30,6 +30,7 @@ const indexController = {
     search: function(req,res){  
         let palabraBuscada = req.query.search;                                           /* search es el input name del formulario de los headers*/ 
         let promesaNombre = Productos.findAll({
+                                include: [{association: 'usuarioProducto'}],
                                 where:[{ nombre:{ [op.like]: `%${palabraBuscada}%`}}] 
                              });
         let promesaDescripcion = Productos.findAll({
