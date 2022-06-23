@@ -45,6 +45,10 @@ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
 CREATE TABLE seguidores (
+id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+created_at DATE,
+updated_at DATE,
+deleted_at DATE,
 seguidor_id INT UNSIGNED,
 
 FOREIGN KEY (seguidor_id) REFERENCES usuarios(id),
@@ -52,4 +56,5 @@ FOREIGN KEY (seguidor_id) REFERENCES usuarios(id),
 seguido_id INT UNSIGNED,
 
 FOREIGN KEY (seguido_id) REFERENCES usuarios(id)
+
 );

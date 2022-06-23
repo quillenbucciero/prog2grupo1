@@ -2,6 +2,7 @@ const db = require("../database/models"); //Requiero db
 const Usuarios = db.Usuarios; //Alias de la db
 const bcrypt = require('bcryptjs');
 const productos = db.Productos
+const Seguidores = db.Seguidores;
 
 const profileController = {
     register: function (req,res) {
@@ -191,12 +192,54 @@ const profileController = {
                 }).catch((err) => {
                 return res.send(err)
                 })   
-        }
+    }, 
+    seguir : (req,res) => {
 
+        let errores = {}       
+        let info = req.body
+        let seguimiento = {
+        seguidor_id: req.session.usuario.id,
+        seguido_id: info.seguidoId
+         }
 
+         let filtro = { where:[{seguidor_id: req.params.id, seguido_id: info.seguidoId }] }
+
+         Seguidores.findOne(filtro, {
+                    include: {
+                        all: true,
+                        nested: true
+                    }
+        })
+        .then((result) => {
+            if (result === null) {
+
+                Seguidores.create(seguimiento)
+                .then((result) => {
+                    res.redirect('/profile/id/' + req.params.id)
+                }).catch((err) => {
+                    console.log(err)
+                });
+            } else {
+                errores.message = "Ya sigue a este usuario"
+                res.locals.errors = errores
+            }
+        }).catch((err) => {
+            console.log(err)
+        });    
        
-    }
-
+    },
+    unfollow: (req, res) => {
+        let info = req.body
+        let seguidor = req.session.usuario.id 
+        let seguido = info.seguidoId
+        filtro = {
+            where:[{seguidor_id: seguidor, seguido_id: seguido}]
+        }
+        Seguidores.destroy(filtro)
+        .then(resultado => res.redirect('/profile/id/'+ req.params.id))
+        .catch(err => console.log(err))
+    },
+}
     
 
 module.exports = profileController;

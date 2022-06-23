@@ -414,7 +414,20 @@ hr {
   padding: 15px;
   border-radius: 8px;
   border: none;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+.form-seguir {
+  margin-left: 10px
+}
+
+.boton-seguir {
+  background-color: var(--light-blue);
+  font-size: 20px;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
 }
 
 .action-button {

@@ -19,12 +19,31 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= user.nombre %> 
-						<a href="/profile/edit/id/ <%= user.id %> ">
-							<i class="fas fa-cog"></i>
-						</a>
+					<h1 class="main-title"> <%= user.nombre %> <%= user.apellido %>  					
 					</h1>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+					<% if ( locals.usuario != undefined && locals.usuario.id == user.id  ) { %> 
+					<a href="/profile/edit/id/ <%= user.id %> " class="boton-editar">
+						<i class="fas fa-cog"></i>
+					</a>
+										
+					<% } else if( locals.usuario != undefined && locals.usuario.id != user.id) { %> 
+						
+						<%if(locals.errors == undefined) {%>
+						<form  action="/profile/seguir/<%=user.id%>" method="POST" class="form-seguir" >
+							<input type="hidden" name="seguidoId" value="<%= user.id%>">
+							<input type="hidden" name="seguidoUsuario" value="<%= locals.usuario.id%>">
+							<button class="boton-seguir" type="submit" name="seguir">Seguir</button>
+						</form>
+						<% }else {%>								
+							<form  action="/profile/unfollow" method="POST" >
+								<input type="hidden" name="seguidoId" value="<%= user.id%>">
+								<input type="hidden" name="seguidoUsuario" value="<%= locals.usuario.id%>">
+								<button class="boton-seguir" type="submit" name="seguir">Dejar de seguir</button>
+							</form>
+							
+							<%}%>																		
+
+					<% } %>
 				</div>
 
 				<h3> <%= user.email %> </h3>
@@ -33,6 +52,7 @@
 					<ul class="">
 						<li>  <%= user.productoUsuario.length %> productos</li>  <!-- cantidad -->
 						<li>  <%= user.comentario.length %> comentarios</li>
+						<li>  <%= user.seguidos.length %> seguidores</li>
 					</ul>
 				</div>
 			</div>

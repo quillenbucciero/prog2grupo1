@@ -9,12 +9,24 @@ module.exports = function(sequelize, dataTypes){
         seguido_id: {
             type: dataTypes.INTEGER
         },
+        created_at : {
+            type: dataTypes.DATE,
+            allowNull:true,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
+            allowNull: true,
+        },
+        deleted_at: {
+            type: dataTypes.DATE,
+            allowNull: true,
+        }
 
     };
 
     let config = {
         tableName: 'seguidores', 
-        timestamps: false, 
+        timestamps: true, 
         underscored: true, 
     };
 

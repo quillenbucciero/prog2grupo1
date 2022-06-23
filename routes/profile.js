@@ -33,4 +33,7 @@ router.get('/edit/id/:id', profileController.edit);
 
 router.post('/edit/id/:id', upload.single('foto_de_perfil'), profileController.procesarEdit); 
 
+
+router.post('/seguir/:id', profileController.seguir)
+
 module.exports = router;
