@@ -147,6 +147,10 @@ const profileController = {
 
         Usuarios.findByPk(idEditar)
         .then((result) => { /*muestro sus datos xa poder editar*/
+        
+        let idUsuario = req.session.usuario.id;    
+
+        if (result.id == idUsuario){
             let usuario = {
                 id: result.dataValues.id,
                 nombre: result.dataValues.nombre,
@@ -160,33 +164,39 @@ const profileController = {
             }
             return res.render('profile-edit', {
                 usuario: usuario
-            });    
+            });
+            } else{
+                return res.redirect(`/profile/id/${idEditar}`)
+            }
         })
+
     },
     procesarEdit: (req,res) => {
-        let idEditar = req.params.id;
-        console.log(idEditar);
-        console.log(req.body);
-        let foto_de_perfil = req.file.filename;
-        Usuarios.update(
-          {
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            email: req.body.email,
-            usuario: req.body.usuario,
-            fecha_de_nacimiento: req.body.fecha_de_nacimiento,
-            documento: req.body.documento,
-            foto_de_perfil: foto_de_perfil, 
+    let idEditar = req.params.id;
+     let foto_de_perfil = req.file.filename;
+     Usuarios.update(
+            {
+             nombre: req.body.nombre,
+             apellido: req.body.apellido,
+             email: req.body.email,
+             usuario: req.body.usuario,
+             fecha_de_nacimiento: req.body.fecha_de_nacimiento,
+             documento: req.body.documento,
+             foto_de_perfil: foto_de_perfil, 
+            }, 
+            {where :{ id: idEditar}})
+                .then ((result) => {
+                    console.log(result);
+                return res.redirect(`/profile/id/${idEditar}`)
+                }).catch((err) => {
+                return res.send(err)
+                })   
+        }
 
-          }, 
-          {where :{ id: idEditar}})
-        .then ((result) => {
-            console.log(result);
-          return res.redirect(`/profile/id/${idEditar}`)
-        }).catch((err) => {
-          return res.send(err)
-        })   
+
+       
     }
-};
+
+    
 
 module.exports = profileController;
